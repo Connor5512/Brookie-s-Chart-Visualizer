@@ -1,0 +1,1 @@
+window_set_caption("Blank Field" + global.program_title);

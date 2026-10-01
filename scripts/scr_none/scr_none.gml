@@ -1,0 +1,3 @@
+function empty_function() {
+	
+}

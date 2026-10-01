@@ -1,0 +1,1 @@
+clicked_times = 0;

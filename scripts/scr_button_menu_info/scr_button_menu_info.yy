@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"scr_button_menu_info",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"scr_button_menu_info",
+  "parent":{
+    "name":"Buttons",
+    "path":"folders/Scripts/Buttons.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}
