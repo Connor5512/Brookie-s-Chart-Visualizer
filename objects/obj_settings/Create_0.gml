@@ -18,6 +18,7 @@ global.preferences =
 
 global.debug_preferences = {
 	mouse_coordinates: ini_read_real("DEBUG", "mouse_coordinates", false),
+	mouse_position: ini_read_real("DEBUG", "mouse_position", false),
 }
 
 global.debug = false;

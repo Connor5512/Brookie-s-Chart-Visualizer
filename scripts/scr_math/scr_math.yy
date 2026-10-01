@@ -1,9 +1,9 @@
 {
   "$GMScript":"v1",
-  "%Name":"is_multiple",
+  "%Name":"scr_math",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"is_multiple",
+  "name":"scr_math",
   "parent":{
     "name":"Scripts",
     "path":"folders/Scripts.yy",

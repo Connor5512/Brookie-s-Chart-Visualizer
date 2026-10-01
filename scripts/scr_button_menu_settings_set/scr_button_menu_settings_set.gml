@@ -9,5 +9,7 @@ if variable_global_exists("button_init") {
 		global.preferences.play_music = !(global.preferences.play_music);
 	} else if button = "Mouse coordinates" {
 		global.debug_preferences.mouse_coordinates = !(global.debug_preferences.mouse_coordinates);
+	} else if button = "Mouse position" {
+		global.debug_preferences.mouse_position = !(global.debug_preferences.mouse_position);
 	}
 }

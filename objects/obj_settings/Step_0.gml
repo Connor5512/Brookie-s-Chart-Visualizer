@@ -65,4 +65,5 @@ ini_write_real("PREFERENCES", "label_marchers", global.preferences.label_marcher
 ini_write_real("PREFERENCES", "play_music", global.preferences.play_music);
 
 ini_write_real("DEBUG", "mouse_coordinates", global.debug_preferences.mouse_coordinates);
+ini_write_real("DEBUG", "mouse_position", global.debug_preferences.mouse_position);
 ini_close();

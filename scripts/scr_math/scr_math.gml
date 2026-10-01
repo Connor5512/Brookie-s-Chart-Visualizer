@@ -13,3 +13,22 @@ function is_multiple(n1, n2) {
 	
 	//!(string_contains(string((n1/n2)), "."));
 }
+
+function round_to_multiple(_round, multiple, _method = rounding.normal) {
+	var result;
+	if _method == rounding.up {
+		result = ceil(_round/multiple) * multiple;
+	} else if _method == rounding.down {
+		result = floor(_round/multiple) * multiple;
+	} else if _method == rounding.normal {
+		result = round(_round/multiple) * multiple;
+	}
+	
+	return result;
+}
+
+enum rounding {
+	normal,
+	up,
+	down
+}

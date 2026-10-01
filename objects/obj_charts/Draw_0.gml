@@ -8,6 +8,7 @@ draw_set_alpha(3/array_length(chart_objects));
 draw_set_halign(fa_left);
 draw_set_valign(fa_top);
 var _y = 1394
+draw_set_font(fnt_default);
 draw_text(173, _y, chart + 1);
 draw_text(339, _y, charts[chart+1].counts);
 
