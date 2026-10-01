@@ -136,6 +136,6 @@ enum instruments {
 	tenor_sax,
 	tuba,
 	trumpet,
-	flag,
+	pole,
 	baton
 }
