@@ -49,7 +49,7 @@ The "chart" attribute is self-explanatory, though it does need to reference this
 2. front_sideline,
 3. back_sideline
 
-as is "symbol". Both can be pulled directly from the coordinate sheets. But "type" and "instrument" need to be implied.
+"symbol" is also self-explanatory. These can be pulled directly from the coordinate sheets. But "type" and "instrument" need to be implied.
 
 In this example, `G13` is a member of the Colorguard, so their "type" and "instrument" need to be set accordingly (Colorguard and Majorette techincally don't need to have an instrument set, but it helps keep consistancy.)
 
