@@ -14,9 +14,9 @@ if
 	(file_exists(working_directory + "four_elements/part_three_air.json")) &&
 	(file_exists(working_directory + "four_elements/part_three_air_const.ogg")) &&
 	
-	(file_exists(working_directory + "four_elements/part_three_air.brcv")) &&
-	(file_exists(working_directory + "four_elements/part_three_air.json")) &&
-	(file_exists(working_directory + "four_elements/part_three_air_const.ogg"))
+	(file_exists(working_directory + "four_elements/part_four_fire_finale.brcv")) &&
+	(file_exists(working_directory + "four_elements/part_four_fire_finale.json")) &&
+	(file_exists(working_directory + "four_elements/part_four_fire_finale.ogg"))
 {
 	clickable = true;
 }
