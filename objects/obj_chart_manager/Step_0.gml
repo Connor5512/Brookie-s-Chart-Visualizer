@@ -1,27 +1,27 @@
 if mode == chart_manager_modes.export {
 	var name;
 	if instance_exists(obj_conductor) {
-		var temp_string = get_save_filename("*.BRCV", obj_conductor.target_file);
+		var temp_string = get_save_filename("*.CHART", obj_conductor.target_file);
 		if temp_string == "" {
 			instance_destroy();
 			exit;
 		}
-		name = temp_string// + ".brcv";
+		name = temp_string// + ".chart";
 		var num = 0;
 		while true {
 			if file_exists(name) {
 				num += 1;
 				if instance_exists(obj_conductor) {
-					name = obj_conductor.song + " (" + string(num) + ")" + ".brcv";
+					name = obj_conductor.song + " (" + string(num) + ")" + ".chart";
 				} else {
-					name = "song" + " (" + string(num) + ")" + ".brcv";
+					name = "song" + " (" + string(num) + ")" + ".chart";
 				}
 			} else {
 				break;
 			}
 		}
 	} else {
-		name = get_save_filename("*.BRCV", "blank.brcv");
+		name = get_save_filename("*.CHART", "blank.chart");
 	}
 	
 	var chart_objects = [];
@@ -47,10 +47,11 @@ if mode == chart_manager_modes.export {
 	
 	create_message("File \"" + name + "\" saved!");
 } else if mode == chart_manager_modes.import {
-	var brcv_path;
+	var chart_path, show_path;
+	var old_caption = window_get_caption();
 	if open_file {
-		brcv_path = get_open_filename("BRCV files (*.brcv)", "");
-		if brcv_path == "" {
+		chart_path = get_open_filename("Brookie Visual Files (*.chart, *.show)|*.chart;*.show", "");
+		if chart_path == "" {
 			instance_destroy();
 			//window_set_caption("Blank Field" + global.program_title);
 			create_message("File import canceled.");
@@ -63,20 +64,25 @@ if mode == chart_manager_modes.export {
 				}
 			exit;
 		}
-		window_set_caption(filename_name(brcv_path) + "" + global.program_title);
+		window_set_caption(filename_name(chart_path) + "" + global.program_title);
 	} else {
 		file_text_open_read(import_target);
-		brcv_path = import_target;
+		chart_path = import_target;
+	}
+		
+	if string_lower(filename_ext(chart_path)) == ".show" {
+		file_mode = file_modes.show;
 	}
 	
-	//importing the song
-	var path;
-	if open_file || variable_instance_exists(id, "song_import") {
+	//importing singular charts
+	if file_mode == file_modes.chart {
+		//importing the song
+		var audio_path, properties_path;
 		if open_file {
-			path = get_open_filename("OGG files (*.ogg)", "");
-			if path == "" {
+			audio_path = get_open_filename("OGG Files (*.ogg)|*.ogg", "");
+			if audio_path == "" {
 				instance_destroy();
-				//window_set_caption("Blank Field" + global.program_title);
+				window_set_caption(old_caption);
 				create_message("File import canceled.");
 				if instance_exists(obj_conductor) {
 					if obj_conductor.music != undefined {
@@ -88,15 +94,14 @@ if mode == chart_manager_modes.export {
 				exit;
 			}
 		} else {
-			path = song_import;
+			audio_path = song_import;
 		}
-		var new_sound = audio_create_stream(path);
 	
 		if open_file {
-			path = get_open_filename("JSON files (*.json)", "");
-			if path == "" {
+			properties_path = get_open_filename("JSON Files (*.json)|*.json", "");
+			if properties_path == "" {
 				instance_destroy();
-				//window_set_caption("Blank Field" + global.program_title);
+				window_set_caption(old_caption);
 				create_message("File import canceled.");
 				if instance_exists(obj_conductor) {
 					if obj_conductor.music != undefined {
@@ -108,173 +113,34 @@ if mode == chart_manager_modes.export {
 				exit;
 			}
 		} else {
-			path = song_properties;
+			properties_path = song_properties;
 		}
-		var buffer = buffer_load(path);
-		var json = buffer_read(buffer, buffer_text);
-	
-		var music_properties = json_parse(json);
-	
-		global.music[array_length(global.music)] =
-			{
-				sound: new_sound,
-				tempo: music_properties.tempo,
-				time_signature_count: music_properties.time_signature_count,
-				time_signature_beat: music_properties.time_signature_beat
-			}
 		
-		song = string_replace_all(string(new_sound), "ref sound ", "");
-	}
+		load_charts(chart_path, audio_path, properties_path);
+	} else if file_mode == file_modes.show {
+		//initialize show
+		if global.show.path != chart_path {
+			directory_destroy("temp");
+			zip_unzip(chart_path, "temp");
+			
+			var buffer = buffer_load("temp/properties.json");
+			var json = buffer_read(buffer, buffer_text);
 	
-	var inst = instance_create_layer(0, 0, "Band", obj_conductor);
-	inst.time_signature_beat = global.music[array_length(global.music)-1].time_signature_beat;
-	inst.time_signature_count = global.music[array_length(global.music)-1].time_signature_count;
-	
-	//Processing the charts
-	delete_marchers();
-	
-	var buffer = buffer_load(brcv_path);
-	var json = buffer_read(buffer, buffer_text);
-	buffer_delete(buffer);
-	
-	var data = json_decode(json);
-	var ds_keys = ds_map_keys_to_array(data);
-	show_debug_message(ds_keys);
-	
-	for (var i = 0; i < array_length(ds_keys); i++) {
-		var key = ds_keys[i];
+			var show_properties = json_parse(json);
 		
-		if string_ends_with(key, "_charts") {
-			var chart_objects = [];
-			with (obj_charts) {
-			    array_push(chart_objects, id); 
+			global.show = {
+				path: chart_path,
+				name: show_properties.name,
+				songs: show_properties.songs,
+				current_song: 0
 			}
 			
-			var obj = noone;
-			for (var _i = 0; _i < array_length(chart_objects); _i++) {
-				if chart_objects[_i].label == string_replace_all(key, "_charts", "") {
-					obj = chart_objects[_i];
-				}
-			}
-			if obj == noone {
-				obj = instance_create_layer(0, 0, "Band", obj_charts);
-				obj.label = string_replace_all(key, "_charts", "")
-			}
-			
-			var json_charts = ds_map_find_value(data, key);
-			var reconstructed_charts = [];
-
-			for (var c = 0; c < ds_list_size(json_charts); c++) {
-				var chart = ds_list_find_value(json_charts, c);
-
-				reconstructed_charts[c] = {
-					counts: ds_map_find_value(chart, "counts"),
-					side: ds_map_find_value(chart, "side"),
-					front_back_marker: ds_map_find_value(chart, "front_back_marker"),
-					front_back_steps: ds_map_find_value(chart, "front_back_steps"),
-					yard_line: ds_map_find_value(chart, "yard_line"),
-					outside_inside_steps: ds_map_find_value(chart, "outside_inside_steps")
-				};
-			}
-
-			obj.charts = reconstructed_charts;
-
-			//innitialize positions
-			var inside_outside_multiplier;
-			if obj.charts[0].side == 1 {
-				inside_outside_multiplier = -1;
-			} else if obj.charts[0].side == 2 || obj.charts[0].side == 0 {
-				inside_outside_multiplier = 1;
-			}
-
-			obj.x = ((50 - obj.charts[0].yard_line) * obj.yard_spacing * inside_outside_multiplier) + (obj.charts[0].outside_inside_steps * -inside_outside_multiplier * obj.step_width) + obj.fifty_yard;
-
-			obj.y = obj.front_back_y[obj.charts[0].front_back_marker] + (obj.charts[0].front_back_steps * obj.step_width);
-			
-			show_debug_message("Imported charts for " + obj.label);
+			window_set_caption("\"" + global.show.name + "\"" + global.program_title);
 		}
+		create_message("Loaded \"" + global.show.name + "\".")
+		
+		scr_setup_show_general();
 	}
-	
-	//go back through objects and add their attributes
-	var chart_objects = [];
-	with (obj_charts) {
-		array_push(chart_objects, id);
-	}
-	
-	for (var i = 0; i < array_length(chart_objects); i++) {
-		var obj = chart_objects[i];
-		var label = obj.label;
-		
-		var symbol_key = label + "_symbol";
-		var type_key = label + "_type";
-		var instrument_key = label + "_instrument";
-		
-		if ds_map_exists(data, symbol_key) {
-			obj.symbol = ds_map_find_value(data, symbol_key);
-		}
-		
-		if ds_map_exists(data, type_key) {
-			obj.type = ds_map_find_value(data, type_key);
-		}
-		
-		if ds_map_exists(data, instrument_key) {
-			obj.instrument = ds_map_find_value(data, instrument_key);
-		}
-		
-		if obj.type == marchers.band {
-			obj.sprite_index = spr_marcher_band;
-			obj.layer = layer_get_id("Band");
-		} else if obj.type == marchers.colorguard {
-			obj.sprite_index = spr_marcher_colorguard;
-			obj.layer = layer_get_id("Colorguard");
-		} else if obj.type == marchers.majorette {
-			obj.sprite_index = spr_marcher_majorette;
-			obj.layer = layer_get_id("Majorette");
-		} else if obj.type == marchers.front_ensemble {
-			obj.sprite_index = spr_marcher_front_ensemble;
-			obj.layer = layer_get_id("Band");
-		}
-
-		if obj.colors {
-			if obj.sprite_index == spr_marcher_band {
-				if obj.instrument == instruments.alto_sax {
-					obj.image_index = 1; //alto saxophone
-				} else if obj.instrument == instruments.baritone_horn {
-					obj.image_index = 2; //baritone
-				} else if obj.instrument == instruments.clarinet {
-					obj.image_index = 3; //clarinet
-				} else if obj.instrument == instruments.trombone {
-					obj.image_index = 8; //trombone
-				} else if obj.instrument == instruments.flute {
-					obj.image_index = 5; //flute
-				} else if obj.instrument == instruments.mellophone {
-					obj.image_index = 6; //mellophone
-				} else if obj.instrument == instruments.battery_percussion {
-					obj.image_index = 7; //percussion
-				} else if obj.instrument == instruments.tenor_sax {
-					obj.image_index = 1; //tenor sax
-				} else if obj.instrument == instruments.tuba {
-					obj.image_index = 4; //tuba
-				} else if obj.instrument == instruments.trumpet {
-					obj.image_index = 9; //trumpet
-				} else {
-					obj.image_index = 0;
-				}
-			}
-		} else {
-			obj.image_index = 0;
-		}
-		
-		show_debug_message("Attributes for " + obj.label + " finalized");
-	}
-	
-	if (open_file) {
-		create_message(string(array_length(chart_objects)) + " marchers loaded.");
-	}
-	
-	obj_conductor.song = song
-	obj_conductor.next = next
-	obj_conductor.target_file = filename_name(brcv_path);
 }
 
 instance_destroy();

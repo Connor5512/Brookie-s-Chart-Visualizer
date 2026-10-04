@@ -3,6 +3,7 @@ game_set_speed(60, gamespeed_fps);
 
 opening = false;
 saving = false;
+resetting = false;
 
 set_settings_visibility(false);
 set_menu_visibility(true);
@@ -20,6 +21,8 @@ global.debug_preferences = {
 	mouse_coordinates: ini_read_real("DEBUG", "mouse_coordinates", false),
 	mouse_position: ini_read_real("DEBUG", "mouse_position", false),
 }
+
+reset_show_info();
 
 global.debug = false;
 global.program_title = " - Brookie's Chart Visualizer";

@@ -38,3 +38,5 @@ function set_piece_variables() {
 
 next = scr_none;
 target_file = "";
+
+show = false;

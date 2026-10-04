@@ -9,6 +9,14 @@ enum chart_manager_modes {
 	export
 }
 
+file_mode = file_modes.chart;
+new_show_import = false;
+
+enum file_modes {
+	chart,
+	show
+}
+
 function write_instance_to_ds_map(instance, map) {
 	var inst = instance.label;
 	ds_map_add(map, inst + "_type", instance.type);

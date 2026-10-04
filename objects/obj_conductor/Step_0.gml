@@ -23,6 +23,13 @@ if audio_is_playing(music) {
 }
 beat = pos/delay;
 
-if pos = 0 && song_played {
-	script_execute(next);
+if pos = 0 && song_played && !(audio_is_playing(music)) {
+	if (show) {
+		if array_length(global.show.songs) - 1 != global.show.current_song {
+			global.show.current_song++;
+			scr_setup_show_general();
+		}
+	} else {
+		script_execute(next);
+	}
 }

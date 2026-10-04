@@ -5,7 +5,7 @@ if instance_exists(obj_conductor) {
 	var inst = instance_create_layer(0, 0, "ChartManager", obj_chart_manager);
 	inst.mode = chart_manager_modes.import;
 	inst.open_file = false;
-	inst.import_target = working_directory + "four_elements/part_four_fire_finale.brcv";
+	inst.import_target = working_directory + "four_elements/part_four_fire_finale.chart";
 	inst.song_import = working_directory + "four_elements/part_four_fire_finale.ogg";
 	inst.song_properties = working_directory + "four_elements/part_four_fire_finale.json";
 	//inst.song = everybody_talks1;

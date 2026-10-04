@@ -1,10 +1,14 @@
-if !(opening) && !(saving) {
+if !(opening) && !(saving) && !(resetting) {
 	if keyboard_check(vk_control) && keyboard_check(ord("O")) {
 		opening = true;
 	}
 	
 	if keyboard_check(vk_control) && keyboard_check(ord("S")) {
 		saving = true;
+	}
+	
+	if keyboard_check(vk_control) && keyboard_check(ord("N")) {
+		resetting = true;
 	}
 } else if saving {
 	var inst = instance_create_layer(0, 0, "ChartManager", obj_chart_manager);
@@ -21,11 +25,16 @@ if !(opening) && !(saving) {
 		}
 	}
 	
+	//reset_show_info();
 	var inst = instance_create_layer(0, 0, "ChartManager", obj_chart_manager);
 	inst.mode = chart_manager_modes.import;
 	inst.open_file = true;
 	
 	opening = false;
+} else if resetting {
+	script_execute(scr_button_menu_blankfield);
+	
+	resetting = false;
 }
 
 if keyboard_check_pressed(vk_escape) {
