@@ -1,4 +1,4 @@
-show_debug_message("Create event fired - " + string(id));
+debug_message(object_index, id, "Create event fired - " + string(id));
 
 metronome = !(global.preferences.play_music);
 metronome_count = beats.eighth;

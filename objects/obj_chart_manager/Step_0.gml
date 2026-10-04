@@ -1,7 +1,7 @@
 if mode == chart_manager_modes.export {
 	var name;
 	if instance_exists(obj_conductor) {
-		var temp_string = get_save_filename("*.CHART", obj_conductor.target_file);
+		var temp_string = get_save_filename("Brookie Visual Files (*.chart)|*.chart", obj_conductor.target_file);
 		if temp_string == "" {
 			instance_destroy();
 			exit;
@@ -21,7 +21,13 @@ if mode == chart_manager_modes.export {
 			}
 		}
 	} else {
-		name = get_save_filename("*.CHART", "blank.chart");
+		name = get_save_filename("Brookie Visual Files (*.chart)|*.chart", "blank.chart");
+	}
+	
+	if name == "" {
+		debug_message(object_index, id, "File export canceled.", log_types.warn);
+		instance_destroy();
+		exit;
 	}
 	
 	var chart_objects = [];
@@ -38,7 +44,7 @@ if mode == chart_manager_modes.export {
 			"majorette",
 			"front_ensemble"
 		]
-		show_debug_message("Written " + types[chart_objects[i].type] + " marcher (" + chart_objects[i].label + ") " + string(i+1));
+		debug_message(object_index, id, "Written " + types[chart_objects[i].type] + " marcher (" + chart_objects[i].label + ") " + string(i+1));
 	}
 
 	var file = file_text_open_write(name);
@@ -46,6 +52,7 @@ if mode == chart_manager_modes.export {
 	file_text_close(file);
 	
 	create_message("File \"" + name + "\" saved!");
+	debug_message(object_index, id, "File saved to path " + string(name));
 } else if mode == chart_manager_modes.import {
 	var chart_path, show_path;
 	var old_caption = window_get_caption();
@@ -55,6 +62,7 @@ if mode == chart_manager_modes.export {
 			instance_destroy();
 			//window_set_caption("Blank Field" + global.program_title);
 			create_message("File import canceled.");
+			debug_message(object_index, id, "File import canceled.", log_types.warn);
 			if instance_exists(obj_conductor) {
 					if obj_conductor.music != undefined {
 						if audio_is_playing(obj_conductor.music) {
@@ -66,12 +74,23 @@ if mode == chart_manager_modes.export {
 		}
 		window_set_caption(filename_name(chart_path) + "" + global.program_title);
 	} else {
-		file_text_open_read(import_target);
-		chart_path = import_target;
+		if file_exists(import_target) {
+			file_text_open_read(import_target);
+			chart_path = import_target;
+		} else {
+			instance_destroy();
+			create_message("File import failed.");
+			debug_message(object_index, id, "File import failed; Target file does not exist.", log_types.warn);
+			exit;
+		}
 	}
 		
 	if string_lower(filename_ext(chart_path)) == ".show" {
 		file_mode = file_modes.show;
+	} else if string_lower(filename_ext(chart_path)) == ".chart" {
+		file_mode = file_modes.chart;
+	} else {
+		debug_message(object_index, id, "Invalid file extension. File cannot be imported.", log_types.error);
 	}
 	
 	//importing singular charts
@@ -84,6 +103,7 @@ if mode == chart_manager_modes.export {
 				instance_destroy();
 				window_set_caption(old_caption);
 				create_message("File import canceled.");
+				debug_message(object_index, id, "File import canceled.", log_types.warn);
 				if instance_exists(obj_conductor) {
 					if obj_conductor.music != undefined {
 						if audio_is_playing(obj_conductor.music) {
@@ -103,6 +123,7 @@ if mode == chart_manager_modes.export {
 				instance_destroy();
 				window_set_caption(old_caption);
 				create_message("File import canceled.");
+				debug_message(object_index, id, "File import canceled.", log_types.warn);
 				if instance_exists(obj_conductor) {
 					if obj_conductor.music != undefined {
 						if audio_is_playing(obj_conductor.music) {
@@ -120,10 +141,11 @@ if mode == chart_manager_modes.export {
 	} else if file_mode == file_modes.show {
 		//initialize show
 		if global.show.path != chart_path {
-			directory_destroy("temp");
-			zip_unzip(chart_path, "temp");
+			directory_destroy("cache/show/");
+			debug_message(object_index, id, "Unzipping *.show file...");
+			zip_unzip(chart_path, "cache/show/");
 			
-			var buffer = buffer_load("temp/properties.json");
+			var buffer = buffer_load("cache/show/properties.json");
 			var json = buffer_read(buffer, buffer_text);
 	
 			var show_properties = json_parse(json);
@@ -138,7 +160,7 @@ if mode == chart_manager_modes.export {
 			window_set_caption("\"" + global.show.name + "\"" + global.program_title);
 		}
 		create_message("Loaded \"" + global.show.name + "\".")
-		
+		debug_message(object_index, id, "Show loaded: \"" + global.show.name + "\"");
 		scr_setup_show_general();
 	}
 }

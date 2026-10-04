@@ -66,8 +66,29 @@ function find_object_id(object){
  * @param {Any} string_or_format The custom debug message to show or a string format.
 */
 
-function debug_message(object, inst, val_or_format) {
+function debug_message(object, inst, val_or_format, type = log_types.info) {
+	var log_names = [
+		"/info",
+		"/warn",
+		"/error",
+		"/UUT"
+	]
+	
 	var obj = string_replace_all(string(object), "ref object ", "");
+	obj = string_replace_all(string(obj), "ref script ", "");
 	var instance = string_replace_all(string(inst), "ref instance ", "");
-	show_debug_message(obj + " (" + instance + ") - \"" + string(val_or_format) + "\"");
+	
+	var log = file_text_open_append(global.log_file);
+	var _message = "[" + log_names[type] + "] " + obj + " (" + instance + ") - \"" + string(val_or_format) + "\""
+	show_debug_message(_message);
+	file_text_write_string(log, _message);
+	file_text_writeln(log);
+	file_text_close(log);
+}
+
+enum log_types {
+	info,
+	warn,
+	error,
+	unit_test
 }

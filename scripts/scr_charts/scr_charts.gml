@@ -8,7 +8,7 @@ function delete_marchers() {
 	for (var i = 0; i < array_length(chart_objects); i++) {
 		instance_destroy(chart_objects[i]);
 	}
-	show_debug_message("Destroyed " + string(temp) + " marchers");
+	debug_message(object_index, id, "Destroyed " + string(temp) + " marchers");
 }
 
 function load_charts(chart_path, audio_path, properties_path, show = false) {
@@ -43,7 +43,7 @@ function load_charts(chart_path, audio_path, properties_path, show = false) {
 	
 	var data = json_decode(json);
 	var ds_keys = ds_map_keys_to_array(data);
-	show_debug_message(ds_keys);
+	//debug_message(object_index, id, ds_keys);
 	
 	for (var i = 0; i < array_length(ds_keys); i++) {
 		var key = ds_keys[i];
@@ -95,7 +95,7 @@ function load_charts(chart_path, audio_path, properties_path, show = false) {
 
 			obj.y = obj.front_back_y[obj.charts[0].front_back_marker] + (obj.charts[0].front_back_steps * obj.step_width);
 			
-			show_debug_message("Imported charts for " + obj.label);
+			debug_message(object_index, id, "Imported charts for " + obj.label);
 		}
 	}
 	
@@ -115,14 +115,23 @@ function load_charts(chart_path, audio_path, properties_path, show = false) {
 		
 		if ds_map_exists(data, symbol_key) {
 			obj.symbol = ds_map_find_value(data, symbol_key);
+		} else {
+			debug_message(object_index, id, label + " has no attached \"_symbol\" attribute. Using default...", log_types.warn);
+			obj.symbol = "^";
 		}
 		
 		if ds_map_exists(data, type_key) {
 			obj.type = ds_map_find_value(data, type_key);
+		} else {
+			debug_message(object_index, id, label + " has no attached \"_type\" attribute. Using default...", log_types.warn);
+			obj.type = marchers.colorguard;
 		}
 		
 		if ds_map_exists(data, instrument_key) {
 			obj.instrument = ds_map_find_value(data, instrument_key);
+		} else {
+			debug_message(object_index, id, label + " has no attached \"_instrument\" attribute. Using default...", log_types.warn);
+			obj.instrument = instruments.pole;
 		}
 		
 		if obj.type == marchers.band {
@@ -169,7 +178,7 @@ function load_charts(chart_path, audio_path, properties_path, show = false) {
 			obj.image_index = 0;
 		}
 		
-		show_debug_message("Attributes for " + obj.label + " finalized");
+		debug_message(object_index, id, "Attributes for " + obj.label + " finalized");
 	}
 	
 	obj_conductor.song = song

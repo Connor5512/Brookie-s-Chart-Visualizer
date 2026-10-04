@@ -81,8 +81,8 @@ if charts[chart].side == 1 {
 x_start = ((50 - charts[chart].yard_line) * yard_spacing * inside_outside_multiplier) + (charts[chart].outside_inside_steps * -inside_outside_multiplier * step_width) + fifty_yard;
 y_start = front_back_y[charts[chart].front_back_marker] + (charts[chart].front_back_steps * step_width);
 
-//show_debug_message(array_length(charts))
-//show_debug_message(array_length(chart+1))
+//debug_message(object_index, id, array_length(charts))
+//debug_message(object_index, id, array_length(chart+1))
 //if array_length(charts) > chart+1 {
 	if charts[chart+1].side == 1 {
 		inside_outside_multiplier = -1;

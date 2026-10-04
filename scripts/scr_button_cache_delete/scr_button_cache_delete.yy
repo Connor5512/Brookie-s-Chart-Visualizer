@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"scr_button_cache_delete",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"scr_button_cache_delete",
+  "parent":{
+    "name":"Buttons",
+    "path":"folders/Scripts/Buttons.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

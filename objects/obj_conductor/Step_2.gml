@@ -17,10 +17,10 @@ if metronome {
 			metronome_beat = 0.33
 			break;
 	}
-	//show_debug_message(metronome_beat)
+	//debug_message(object_index, id, metronome_beat)
 	if is_multiple(beat, metronome_beat) {
-		//show_debug_message(beat/metronome_beat)
-		//show_debug_message(beat)
+		//debug_message(object_index, id, beat/metronome_beat)
+		//debug_message(object_index, id, beat)
 		var pitch = 0.75;
 		if is_multiple(beat, 1) {
 			pitch = 1;
@@ -32,7 +32,7 @@ if metronome {
 				}
 			}
 		}
-		//show_debug_message("Played metronome beat" + string(beat))
+		//debug_message(object_index, id, "Played metronome beat" + string(beat))
 	}
 } else {
 	if music != undefined {

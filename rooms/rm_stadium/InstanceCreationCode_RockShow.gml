@@ -7,5 +7,5 @@ if
 	clickable = true;
 }
 
-//show_debug_message(working_directory + "rock_show/" + "firework.chart");
-//show_debug_message(file_exists(working_directory + "rock_show/" + "firework.chart"));
+//debug_message(object_index, id, working_directory + "rock_show/" + "firework.chart");
+//debug_message(object_index, id, file_exists(working_directory + "rock_show/" + "firework.chart"));
