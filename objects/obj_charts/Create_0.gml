@@ -3,6 +3,14 @@ type = marchers.colorguard;
 symbol = "^";
 label = "G13"
 
+song_name = "";
+show = false;
+
+chart_export_cleanup = false;
+chart_export_path = ""
+
+charts_exported = true;
+
 colors = global.preferences.color_marchers;
 labels = global.preferences.label_marchers;
 

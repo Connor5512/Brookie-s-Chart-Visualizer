@@ -187,5 +187,185 @@ function load_charts(chart_path, audio_path, properties_path, show = false) {
 	
 	if show {
 		obj_conductor.show = true;
+		obj_charts.show = true;
+	}
+}
+
+function export_coordinate_sheet(_id) {
+	var _directory = "cache/chart-export";
+	var filename = _directory + "/" + _id.label + "-charts.png";
+	
+	if !(file_exists(filename)) {
+		var surface = surface_create(816, 1056);
+	
+		surface_set_target(surface);
+	
+		var w = 816;
+		var h = 1056;
+	
+		draw_set_color(c_white);
+		draw_rectangle(0, 0, w, h, false);
+	
+		draw_set_font(fnt_chart_details);
+		draw_set_color(c_black);
+		draw_set_halign(fa_left);
+		draw_text(27.839999999999996, 30.72, "Performer:     Symbol: " + _id.symbol + "    Label: " + _id.label + "    ID:");
+		
+		if (_id.show) {
+			_id.song_name = global.show.songs[global.show.current_song].name;
+		} else {
+			_id.song_name = string(obj_conductor.song);
+		}
+		
+		draw_set_halign(fa_right);
+		draw_text(789.1200000000001, 30.72, _id.song_name);
+		
+		draw_line_width(24.96, 50.88, 792, 50.88, 1);
+		
+		draw_set_halign(fa_left);
+		draw_set_font(fnt_chart_headers);
+		draw_set_color(#333333);
+		draw_text(29.759999999999998, 72.96, "Sets")
+		draw_text(78.72, 72.96, "CountsSide 1-Side 2");
+		draw_text(421.43999999999994, 72.96, "Front Hash-Back Hash");
+		
+		var set_num_x = 29.759999999999998;
+		var set_num_y = 94.08;
+		
+		var counts_x = 101.76;
+		
+		var side_1_2_x = 134.39999999999998;
+		
+		var front_back_x = 421.43999999999994;
+		
+		var line_spacing = 22.08;
+		
+		draw_set_font(fnt_charts);
+		for (var i = 0; i < array_length(_id.charts); i++) {
+			var colcol = [
+				c_white,
+				#e8e8e8
+			]
+			
+			var box_w = 682.5600000000001;
+			var box_h = line_spacing//21.12;
+			
+			var box_y_start = 89.28;
+			var box_x = 29.759999999999998;
+			
+			var col = colcol[is_multiple(i+1, 2)];
+			
+			draw_set_color(col);
+			draw_rectangle(box_x, box_y_start + (i * box_h), box_x + box_w, box_y_start + ((i+1) * box_h), false);
+			
+			var front_back_names = [
+				"Front Hash (HS)",
+				"Back Hash (HS)",
+				"Front side line",
+				"Back side line"
+			]
+			
+			draw_set_color(#333333);
+			draw_set_halign(fa_left);
+			draw_text(set_num_x, set_num_y + (i * line_spacing), string(i));
+			
+			var outside_inside_steps = _id.charts[i].outside_inside_steps;
+			var side = _id.charts[i].side;
+			var yard_line = _id.charts[i].yard_line;
+			
+			var side1_2_text = "";
+			var outside_or_inside = "inside ";
+			if outside_inside_steps < 0 {
+				outside_or_inside = "outside ";
+			} else if outside_inside_steps > 0 {
+				outside_or_inside = "inside ";
+			} else {
+				outside_or_inside = "On ";
+			}
+			
+			if outside_inside_steps != 0 {
+				side1_2_text = "Side " + string(side) + ": " + string(abs(outside_inside_steps)) + " steps " + outside_or_inside + string(yard_line) + "yd ln"
+			} else {
+				if side != 0 {
+					side1_2_text = "Side " + string(side) + ": " + outside_or_inside + string(yard_line) + "yd ln";
+				} else {
+					side1_2_text = outside_or_inside + string(yard_line) + "yd ln";
+				}
+			}
+			
+			draw_text(side_1_2_x, set_num_y + (i * line_spacing), side1_2_text);
+			
+			var front_back_steps = _id.charts[i].front_back_steps;
+			var closest_front_back = _id.charts[i].front_back_marker;
+			
+			var behind_or_front = "in front of ";
+			if front_back_steps < 0 {
+				behind_or_front = "behind ";
+			} else if front_back_steps > 0 {
+				behind_or_front = "in front of ";
+			} else {
+				behind_or_front = "On ";
+			}
+		
+			var front_back_text = "";
+			if front_back_steps != 0 {
+				front_back_text = string(abs(front_back_steps)) + " steps " + behind_or_front + front_back_names[closest_front_back];
+			} else {
+				front_back_text = behind_or_front + front_back_names[closest_front_back];
+			}
+			
+			draw_text(front_back_x, set_num_y + (i * line_spacing), front_back_text);
+		
+			draw_set_halign(fa_center);
+			draw_text(counts_x, set_num_y + (i * line_spacing), string(_id.charts[i].counts));
+		}
+		
+		draw_set_color(c_white);
+	
+		surface_reset_target();
+		var sprite = sprite_create_from_surface(surface, 0, 0, w, h, false, true, 0, 0);
+	
+		sprite_save(sprite, 0, filename);
+	}
+	
+	_id.charts_exported = true;
+	
+	var chart_objects = [];
+	with (obj_charts) {
+		array_push(chart_objects, id);
+	}
+	
+	//debug_message(object_index, id, get_file_count(_directory));
+	//debug_message(object_index, id, array_length(chart_objects));
+	
+	if get_file_count(_directory) == array_length(chart_objects) {
+		var _zip = zip_create();
+		
+		var _path = get_save_filename("ZIP archives|*.zip", "chart-export.zip");
+		
+		if _path == "" {
+			create_message("File export canceled.");
+			debug_message(object_index, id, "File export canceled by user.");
+			directory_destroy("cache/chart-export");
+			exit;
+		}
+			
+		var files = get_directory_files(_directory);
+		//debug_message(object_index, id, files);
+			
+		for (var i = 0; i < array_length(files); i++) {
+			var file_name = files[i];
+			var file_path = _directory + "/" + file_name;
+			
+			//debug_message(object_index, id, file_path + " exists: " + string(file_exists(file_path)));
+			
+			zip_add_file(_zip, file_name, file_path);
+		}
+		
+		zip_save(_zip, _path);
+		
+		_id.chart_export_cleanup = true;
+		_id.chart_export_path = _path;
+		//directory_destroy(_directory);
 	}
 }

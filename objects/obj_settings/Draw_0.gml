@@ -64,8 +64,8 @@ if global.debug {
 		var front_back_names = [
 			"Front Hash",
 			"Back Hash",
-			"Front Sideline",
-			"Back Sideline"
+			"Front side line",
+			"Back side line"
 		]
 		
 		var closest_front_back;

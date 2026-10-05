@@ -119,8 +119,8 @@
   "maintainGms1Font":false,
   "name":"fnt_headers",
   "parent":{
-    "name":"Brookie's Chart Visualizer",
-    "path":"Brookie's Chart Visualizer.yyp",
+    "name":"Fonts",
+    "path":"folders/Fonts.yy",
   },
   "pointRounding":0,
   "ranges":[

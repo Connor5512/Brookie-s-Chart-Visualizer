@@ -36,6 +36,8 @@ if metronome {
 	}
 } else {
 	if music != undefined {
-		audio_sound_gain(music, 1);
+		if audio_exists(music) {
+			audio_sound_gain(music, 1);
+		}
 	}
 }
