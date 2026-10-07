@@ -64,7 +64,7 @@ If you have enough free time, you can absolutely plug in all the coordinates for
 The *.chart files store the positions of the marchers' dots.
 
 Individual songs also require audio and song properties. These are stored as OGG Vorbis files and *.JSON structures respectively.
-The [**Show Movements**](https://github.com/Connor5512/Brookie-s-Chart-Visualizer/blob/main/custom-charts.md#show-movements) section details how these files are formatted.
+The [**Show Movements**](#show-movements) section details how these files are formatted.
 
 ## Show Movements
 To create full show movements (like the examples on the main menu), the steps are relatively simple.
