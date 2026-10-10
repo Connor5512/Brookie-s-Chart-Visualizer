@@ -16,10 +16,7 @@ function load_charts(chart_path, audio_path, properties_path, show = false) {
 	var new_sound = audio_create_stream(audio_path);
 	
 	//init song properties
-	var buffer = buffer_load(properties_path);
-	var json = buffer_read(buffer, buffer_text);
-	
-	var music_properties = json_parse(json);
+	var music_properties = load_json(properties_path);
 	
 	global.music[array_length(global.music)] = {
 		sound: new_sound,
@@ -37,8 +34,8 @@ function load_charts(chart_path, audio_path, properties_path, show = false) {
 	//Processing the charts
 	delete_marchers();
 	
-	buffer = buffer_load(chart_path);
-	json = buffer_read(buffer, buffer_text);
+	var buffer = buffer_load(chart_path);
+	var json = buffer_read(buffer, buffer_text);
 	buffer_delete(buffer);
 	
 	var data = json_decode(json);

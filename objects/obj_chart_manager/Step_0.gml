@@ -144,11 +144,8 @@ if mode == chart_manager_modes.export {
 			directory_destroy("cache/show/");
 			debug_message(object_index, id, "Unzipping *.show file...");
 			zip_unzip(chart_path, "cache/show/");
-			
-			var buffer = buffer_load("cache/show/properties.json");
-			var json = buffer_read(buffer, buffer_text);
 	
-			var show_properties = json_parse(json);
+			var show_properties = load_json("cache/show/properties.json");
 		
 			global.show = {
 				path: chart_path,
