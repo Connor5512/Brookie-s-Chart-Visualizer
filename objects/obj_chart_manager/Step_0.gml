@@ -7,19 +7,19 @@ if mode == chart_manager_modes.export {
 			exit;
 		}
 		name = temp_string// + ".chart";
-		var num = 0;
-		while true {
-			if file_exists(name) {
-				num += 1;
-				if instance_exists(obj_conductor) {
-					name = obj_conductor.song + " (" + string(num) + ")" + ".chart";
-				} else {
-					name = "song" + " (" + string(num) + ")" + ".chart";
-				}
-			} else {
-				break;
-			}
-		}
+		//var num = 0;
+		//while true {
+		//	if file_exists(name) {
+		//		num += 1;
+		//		if instance_exists(obj_conductor) {
+		//			name = obj_conductor.song + " (" + string(num) + ")" + ".chart";
+		//		} else {
+		//			name = "song" + " (" + string(num) + ")" + ".chart";
+		//		}
+		//	} else {
+		//		break;
+		//	}
+		//}
 	} else {
 		name = get_save_filename("Brookie Visual Files (*.chart)|*.chart", "blank.chart");
 	}

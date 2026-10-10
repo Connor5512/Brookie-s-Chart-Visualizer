@@ -1,4 +1,4 @@
-if !(opening) && !(saving) && !(resetting) {
+if !(opening) && !(saving) && !(resetting) && !(exporting) {
 	if keyboard_check(vk_control) && keyboard_check(ord("O")) {
 		opening = true;
 	}
@@ -9,6 +9,10 @@ if !(opening) && !(saving) && !(resetting) {
 	
 	if keyboard_check(vk_control) && keyboard_check(ord("N")) {
 		resetting = true;
+	}
+	
+	if keyboard_check(vk_control) && keyboard_check(ord("E")) {
+		exporting = true;
 	}
 } else if saving {
 	var inst = instance_create_layer(0, 0, "ChartManager", obj_chart_manager);
@@ -31,6 +35,9 @@ if !(opening) && !(saving) && !(resetting) {
 	inst.open_file = true;
 	
 	opening = false;
+} else if exporting {
+	obj_charts.charts_exported = false;
+	exporting = false;
 } else if resetting {
 	script_execute(scr_button_menu_blankfield);
 	

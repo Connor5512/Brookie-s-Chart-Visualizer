@@ -4,6 +4,7 @@ game_set_speed(60, gamespeed_fps);
 opening = false;
 saving = false;
 resetting = false;
+exporting = false;
 
 set_settings_visibility(false);
 set_menu_visibility(true);
@@ -31,3 +32,5 @@ global.start_time = string(current_year) + "-" + string(current_month) + "-" + s
 global.log_file = "logs/" + string_replace(string(global.start_time), ".", "") + ".log"
 
 debug_message(object_index, id, "global.start_time == " + string(global.start_time))
+
+directory_destroy("cache/chart-export");

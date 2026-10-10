@@ -12,6 +12,8 @@ function delete_marchers() {
 }
 
 function load_charts(chart_path, audio_path, properties_path, show = false) {
+	setup_new_charts();
+	
 	//create sound
 	var new_sound = audio_create_stream(audio_path);
 	
@@ -244,7 +246,7 @@ function export_coordinate_sheet(_id) {
 				#e8e8e8
 			]
 			
-			var box_w = 682.5600000000001;
+			var box_w = 756.48;
 			var box_h = line_spacing//21.12;
 			
 			var box_y_start = 89.28;
