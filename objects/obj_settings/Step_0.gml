@@ -83,3 +83,11 @@ ini_write_real("PREFERENCES", "play_music", global.preferences.play_music);
 ini_write_real("DEBUG", "mouse_coordinates", global.debug_preferences.mouse_coordinates);
 ini_write_real("DEBUG", "mouse_position", global.debug_preferences.mouse_position);
 ini_close();
+
+var field_sprites = [
+	spr_chart_hs,
+	spr_chart_ncaa
+]
+
+var bg = layer_background_get_id("Background");
+layer_background_sprite(bg, field_sprites[hash_type]);

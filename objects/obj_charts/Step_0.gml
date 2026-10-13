@@ -79,7 +79,7 @@ if charts[chart].side == 1 {
 }
 
 x_start = ((50 - charts[chart].yard_line) * yard_spacing * inside_outside_multiplier) + (charts[chart].outside_inside_steps * -inside_outside_multiplier * step_width) + fifty_yard;
-y_start = front_back_y[charts[chart].front_back_marker] + (charts[chart].front_back_steps * step_width);
+y_start = front_back_prop[charts[chart].front_back_marker]._y + (charts[chart].front_back_steps * step_width);
 
 //debug_message(object_index, id, array_length(charts))
 //debug_message(object_index, id, array_length(chart+1))
@@ -91,7 +91,7 @@ y_start = front_back_y[charts[chart].front_back_marker] + (charts[chart].front_b
 	}
 	
 	x_end = ((50 - charts[chart+1].yard_line) * yard_spacing * inside_outside_multiplier) + (charts[chart+1].outside_inside_steps * -inside_outside_multiplier * step_width) + fifty_yard;
-	y_end = front_back_y[charts[chart+1].front_back_marker] + (charts[chart+1].front_back_steps * step_width);
+	y_end = front_back_prop[charts[chart+1].front_back_marker]._y + (charts[chart+1].front_back_steps * step_width);
 //} else {
 //	x_end = x_start;
 //	y_end = y_start;

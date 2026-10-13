@@ -104,10 +104,6 @@ step_width = 13;
 
 fifty_yard = 1146; //x
 yard_spacing = 21.1; //x
-back_hash = 924; //y
-back_sideline = 1293; //y
-front_hash = 557; //y
-front_sideline = 188; //y
 
 enum marchers {
 	band,
@@ -120,15 +116,19 @@ enum front_back {
 	front_hash,
 	back_hash,
 	front_sideline,
-	back_sideline
+	back_sideline,
+	front_hash_ncaa,
+	back_hash_ncaa
 }
 
-front_back_y = [
-	924, //front hash
-	557, //back hash
-	1293, //front sideline
-	188, //back sideline
-]
+front_back_prop = [
+	{ _y: 924, name: "Front Hash (HS)" },
+	{ _y: 557, name: "Back Hash (HS)" },
+	{ _y: 1293, name: "Front side line" },
+	{ _y: 188, name: "Back side line" },
+	{ _y: 872, name: "Front Hash (NCAA)" },
+	{ _y: 608, name: "Back Hash (NCAA)" }
+];
 
 instrument = -1;
 

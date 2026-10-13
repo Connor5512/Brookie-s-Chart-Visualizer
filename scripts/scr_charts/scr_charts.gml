@@ -44,6 +44,17 @@ function load_charts(chart_path, audio_path, properties_path, show = false) {
 	var ds_keys = ds_map_keys_to_array(data);
 	//debug_message(object_index, id, ds_keys);
 	
+	if array_contains(ds_keys, "field_hashes") {
+		obj_settings.hash_type = ds_map_find_value(data, "field_hashes");
+	} else {
+		debug_message(object_index, id, "Charts have no \"field_hashes\" attribute; assuming default hashes (HS)...");
+	}
+	
+	enum field_hashes {
+		HS,
+		NCAA
+	}
+	
 	for (var i = 0; i < array_length(ds_keys); i++) {
 		var key = ds_keys[i];
 		
@@ -92,7 +103,7 @@ function load_charts(chart_path, audio_path, properties_path, show = false) {
 
 			obj.x = ((50 - obj.charts[0].yard_line) * obj.yard_spacing * inside_outside_multiplier) + (obj.charts[0].outside_inside_steps * -inside_outside_multiplier * obj.step_width) + obj.fifty_yard;
 
-			obj.y = obj.front_back_y[obj.charts[0].front_back_marker] + (obj.charts[0].front_back_steps * obj.step_width);
+			obj.y = obj.front_back_prop[obj.charts[0].front_back_marker]._y + (obj.charts[0].front_back_steps * obj.step_width);
 			
 			debug_message(object_index, id, "Imported charts for " + obj.label);
 		}

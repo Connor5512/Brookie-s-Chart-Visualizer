@@ -46,6 +46,8 @@ if mode == chart_manager_modes.export {
 		]
 		debug_message(object_index, id, "Written " + types[chart_objects[i].type] + " marcher (" + chart_objects[i].label + ") " + string(i+1));
 	}
+	
+	ds_map_add(_map, "field_hashes", obj_settings.hash_type);
 
 	var file = file_text_open_write(name);
 	file_text_write_string(file, json_encode(_map, true));

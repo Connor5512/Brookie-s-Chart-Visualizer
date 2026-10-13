@@ -34,3 +34,5 @@ global.log_file = "logs/" + string_replace(string(global.start_time), ".", "") +
 debug_message(object_index, id, "global.start_time == " + string(global.start_time))
 
 directory_destroy("cache/chart-export");
+
+hash_type = field_hashes.HS;
