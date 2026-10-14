@@ -272,7 +272,9 @@ function export_coordinate_sheet(_id) {
 				"Front Hash (HS)",
 				"Back Hash (HS)",
 				"Front side line",
-				"Back side line"
+				"Back side line",
+				"Front Hash (NCAA)",
+				"Back Hash (NCAA)"
 			]
 			
 			draw_set_color(#333333);

@@ -5,6 +5,8 @@ if chart_export_cleanup {
 		directory_destroy("cache/chart-export");
 		
 		chart_export_cleanup = false;
+		
+		debug_message(object_index, id, "Coordinate sheets for \"" + obj_conductor.song + "\" exported.");
 	}
 }
 

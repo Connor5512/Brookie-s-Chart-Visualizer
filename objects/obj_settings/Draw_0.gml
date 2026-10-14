@@ -54,27 +54,30 @@ if global.debug {
 			}
 		}
 
-		var front_back_y = [
-			924, //front hash
-			557, //back hash
-			1293, //front sideline
-			188, //back sideline
-		]
-		
-		var front_back_names = [
-			"Front Hash",
-			"Back Hash",
-			"Front side line",
-			"Back side line"
-		]
+		front_back_prop = [
+			{ _y: 924, name: "Front Hash (HS)" },
+			{ _y: 557, name: "Back Hash (HS)" },
+			{ _y: 1293, name: "Front side line" },
+			{ _y: 188, name: "Back side line" },
+			{ _y: 872, name: "Front Hash (NCAA)" },
+			{ _y: 608, name: "Back Hash (NCAA)" }
+		];
 		
 		var closest_front_back;
 		var closest_front_back_distance = 999999;
-		for (var i = 0; i < array_length(front_back_y); i++) {
-			if abs(front_back_y[i] - mouse_y) < closest_front_back_distance {
-				closest_front_back_distance = abs(front_back_y[i] - mouse_y);
-				closest_front_back = i;
+		for (var i = 0; i < array_length(front_back_prop); i++) {
+			var hs_check = (hash_type == field_hashes.HS) && (i > 3);
+			var ncaa_check = (hash_type == field_hashes.NCAA) && (i < 2);
+			if !(hs_check) && !(ncaa_check) {
+				if abs(front_back_prop[i]._y - mouse_y) < closest_front_back_distance {
+					closest_front_back_distance = abs(front_back_prop[i]._y - mouse_y);
+					closest_front_back = i;
+				}
 			}
+		}
+		
+		if closest_front_back == undefined {
+			exit;
 		}
 
 		//x_start = ((50 - charts[chart].yard_line) * yard_spacing * inside_outside_multiplier) + (charts[chart].outside_inside_steps * -inside_outside_multiplier * step_width) + fifty_yard;
@@ -106,7 +109,7 @@ if global.debug {
 			}
 		}
 		
-		var front_back_steps = round_to_multiple((mouse_y - front_back_y[closest_front_back]) / step_width, 0.05);
+		var front_back_steps = round_to_multiple((mouse_y - front_back_prop[closest_front_back]._y) / step_width, 0.05);
 		
 		var behind_or_front = "in front of ";
 		if front_back_steps < 0 {
@@ -119,9 +122,9 @@ if global.debug {
 		
 		var front_back_text = "";
 		if front_back_steps != 0 {
-			front_back_text = string(abs(front_back_steps)) + " steps " + behind_or_front + front_back_names[closest_front_back];
+			front_back_text = string(abs(front_back_steps)) + " steps " + behind_or_front + front_back_prop[closest_front_back].name;
 		} else {
-			front_back_text = behind_or_front + front_back_names[closest_front_back];
+			front_back_text = behind_or_front + front_back_prop[closest_front_back].name;
 		}
 		
 		debug_string = string_append(debug_string, 
