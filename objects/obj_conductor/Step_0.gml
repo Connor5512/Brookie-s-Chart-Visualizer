@@ -6,6 +6,11 @@ if timer != 0 {
 metronome = (global.preferences.play_music);
 
 if !(setup) {
+	if music != undefined {
+		if audio_is_playing(music) {
+			audio_stop_sound(music);
+		}
+	}
 	setup = true;
 	set_piece_variables();
 	music = play_sound(sound);

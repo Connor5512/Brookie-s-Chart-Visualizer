@@ -18,6 +18,7 @@
   ],
   "ForcedPrefabProjectReferences":[],
   "IncludedFiles":[
+    {"$GMIncludedFile":"","%Name":"custom-charts.md","CopyToMask":-1,"filePath":"datafiles","name":"custom-charts.md","resourceType":"GMIncludedFile","resourceVersion":"2.0",},
     {"$GMIncludedFile":"","%Name":"part_four_fire_finale (old).chart","CopyToMask":-1,"filePath":"datafiles/four_elements - Copy/charts","name":"part_four_fire_finale (old).chart","resourceType":"GMIncludedFile","resourceVersion":"2.0",},
     {"$GMIncludedFile":"","%Name":"part_four_fire_finale.chart","CopyToMask":-1,"filePath":"datafiles/four_elements - Copy/charts","name":"part_four_fire_finale.chart","resourceType":"GMIncludedFile","resourceVersion":"2.0",},
     {"$GMIncludedFile":"","%Name":"part_one_earth.chart","CopyToMask":-1,"filePath":"datafiles/four_elements - Copy/charts","name":"part_one_earth.chart","resourceType":"GMIncludedFile","resourceVersion":"2.0",},
@@ -85,6 +86,7 @@
     {"id":{"name":"fnt_charts","path":"fonts/fnt_charts/fnt_charts.yy",},},
     {"id":{"name":"fnt_default","path":"fonts/fnt_default/fnt_default.yy",},},
     {"id":{"name":"fnt_headers","path":"fonts/fnt_headers/fnt_headers.yy",},},
+    {"id":{"name":"fnt_large","path":"fonts/fnt_large/fnt_large.yy",},},
     {"id":{"name":"obj_button","path":"objects/obj_button/obj_button.yy",},},
     {"id":{"name":"obj_chart_manager","path":"objects/obj_chart_manager/obj_chart_manager.yy",},},
     {"id":{"name":"obj_charts","path":"objects/obj_charts/obj_charts.yy",},},
@@ -92,6 +94,8 @@
     {"id":{"name":"obj_logo","path":"objects/obj_logo/obj_logo.yy",},},
     {"id":{"name":"obj_message","path":"objects/obj_message/obj_message.yy",},},
     {"id":{"name":"obj_settings","path":"objects/obj_settings/obj_settings.yy",},},
+    {"id":{"name":"rm_init","path":"rooms/rm_init/rm_init.yy",},},
+    {"id":{"name":"rm_soundtest","path":"rooms/rm_soundtest/rm_soundtest.yy",},},
     {"id":{"name":"rm_stadium","path":"rooms/rm_stadium/rm_stadium.yy",},},
     {"id":{"name":"scr_arrays","path":"scripts/scr_arrays/scr_arrays.yy",},},
     {"id":{"name":"scr_audio","path":"scripts/scr_audio/scr_audio.yy",},},
@@ -105,6 +109,7 @@
     {"id":{"name":"scr_button_menu_rockshow","path":"scripts/scr_button_menu_rockshow/scr_button_menu_rockshow.yy",},},
     {"id":{"name":"scr_button_menu_settings_set","path":"scripts/scr_button_menu_settings_set/scr_button_menu_settings_set.yy",},},
     {"id":{"name":"scr_button_menu_settings","path":"scripts/scr_button_menu_settings/scr_button_menu_settings.yy",},},
+    {"id":{"name":"scr_button_menu_soundcheck","path":"scripts/scr_button_menu_soundcheck/scr_button_menu_soundcheck.yy",},},
     {"id":{"name":"scr_charts","path":"scripts/scr_charts/scr_charts.yy",},},
     {"id":{"name":"scr_custom_debug","path":"scripts/scr_custom_debug/scr_custom_debug.yy",},},
     {"id":{"name":"scr_files","path":"scripts/scr_files/scr_files.yy",},},
@@ -146,7 +151,9 @@
   "resourceType":"GMProject",
   "resourceVersion":"2.0",
   "RoomOrderNodes":[
+    {"roomId":{"name":"rm_init","path":"rooms/rm_init/rm_init.yy",},},
     {"roomId":{"name":"rm_stadium","path":"rooms/rm_stadium/rm_stadium.yy",},},
+    {"roomId":{"name":"rm_soundtest","path":"rooms/rm_soundtest/rm_soundtest.yy",},},
   ],
   "templateType":"game",
   "TextureGroups":[

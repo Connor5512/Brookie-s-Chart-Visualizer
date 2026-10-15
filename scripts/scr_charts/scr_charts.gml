@@ -16,6 +16,7 @@ function load_charts(chart_path, audio_path, properties_path, show = false) {
 	
 	//create sound
 	var new_sound = audio_create_stream(audio_path);
+	global.audio_name = filename_name(new_sound);
 	
 	//init song properties
 	var music_properties = load_json(properties_path);

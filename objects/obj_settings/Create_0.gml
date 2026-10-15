@@ -1,4 +1,7 @@
 init_music();
+
+room_goto(rm_stadium);
+
 game_set_speed(60, gamespeed_fps);
 
 opening = false;
@@ -25,7 +28,7 @@ global.debug_preferences = {
 
 reset_show_info();
 
-global.debug = false;
+global.debug = debug_mode;
 global.program_title = " - Brookie's Chart Visualizer";
 
 global.start_time = string(current_year) + "-" + string(current_month) + "-" + string(current_day) + " " + string(current_hour) + "-" + string(current_minute) + "-" + string(current_second)
@@ -36,3 +39,5 @@ debug_message(object_index, id, "global.start_time == " + string(global.start_ti
 directory_destroy("cache/chart-export");
 
 hash_type = field_hashes.HS;
+
+window_set_caption("Blank Field" + global.program_title);

@@ -11,9 +11,9 @@ enum beats {
 }
 
 sound = snd_nosound;
-tempo = 0;
-time_signature_count = 0;
-time_signature_beat = 0;
+tempo = 120;
+time_signature_count = 4;
+time_signature_beat = 4;
 song = "";
 beat = 0;
 beat_old = 0;
@@ -40,3 +40,8 @@ next = scr_none;
 target_file = "";
 
 show = false;
+
+//sound check
+setup_audio = true;
+setup_properties = true;
+new_sound = snd_nosound;

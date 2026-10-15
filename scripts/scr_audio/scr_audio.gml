@@ -14,6 +14,11 @@ function init_music() {
 			tempo: 132,
 			time_signature_count: 4,
 			time_signature_beat: 4
+		},
+		{	sound: snd_nosound,
+			tempo: 120,
+			time_signature_count: 4,
+			time_signature_beat: 4
 		}
 	];
 }
