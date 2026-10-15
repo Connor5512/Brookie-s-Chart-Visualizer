@@ -83,25 +83,25 @@ The *.show file also contains a *.JSON structure giving the file paths and infor
   "name": "Four Elements",
   "songs" : [
 	{
-		"name" : "Part One - Earth",
+		"name" : "Sylva Drill 2026 Mov 1",
 		"chart" : "charts/part_one_earth.chart",
 		"music" : "music/part_one_earth_const.ogg",
 		"properties": "music/part_one_earth.json"
 	},
 	{
-		"name" : "Part Two - Water",
+		"name" : "Sylva Drill 26 Mov 2",
 		"chart" : "charts/part_two_water.chart",
 		"music" : "music/part_two_water.ogg",
 		"properties": "music/part_two_water.json"
 	},
 	{
-		"name" : "Part Three - Air",
+		"name" : "Sylva Drill 26 Mov 3",
 		"chart" : "charts/part_three_air.chart",
 		"music" : "music/part_three_air_const.ogg",
 		"properties": "music/part_three_air.json"
 	},
 	{
-		"name" : "Part Four - Fire & Finale",
+		"name" : "Sylva Drill 26 Mov 4",
 		"chart" : "charts/part_four_fire_finale.chart",
 		"music" : "music/part_four_fire_finale.ogg",
 		"properties": "music/part_four_fire_finale.json"
