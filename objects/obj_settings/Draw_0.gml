@@ -57,8 +57,8 @@ if global.debug {
 		front_back_prop = [
 			{ _y: 924, name: "Front Hash (HS)" },
 			{ _y: 557, name: "Back Hash (HS)" },
-			{ _y: 1293, name: "Front side line" },
-			{ _y: 188, name: "Back side line" },
+			{ _y: 1293, name: "Front sideline" },
+			{ _y: 188, name: "Back sideline" },
 			{ _y: 872, name: "Front Hash (NCAA)" },
 			{ _y: 608, name: "Back Hash (NCAA)" }
 		];
@@ -134,7 +134,11 @@ if global.debug {
 		front_back_text + "\n\n");
 	}
 	if global.debug_preferences.mouse_coordinates {
-		debug_string = string_append(debug_string, "MX = " + string(mouse_x) + "\nMY = " + string(mouse_y) +"\n\n");
+		debug_string = string_append(debug_string, 
+		"Mouse coordinates:\n" +
+		"MX = " + string(mouse_x) +
+		"\nMY = " + string(mouse_y)
+		+"\n\n");
 	}
 }
 

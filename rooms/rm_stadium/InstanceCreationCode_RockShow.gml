@@ -2,7 +2,7 @@ click_script = scr_button_menu_rockshow;
 
 clickable = false;
 if
-	(file_exists(working_directory + "sample/rock_show.show"))
+	(file_exists(working_directory + "sample/rock_show_2026.show"))
 {
 	clickable = true;
 }

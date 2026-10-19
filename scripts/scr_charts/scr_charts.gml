@@ -22,11 +22,14 @@ function load_charts(chart_path, audio_path, properties_path, show = false) {
 	var music_properties = load_json(properties_path);
 	
 	global.music[array_length(global.music)] = {
+		name: music_properties.name,
 		sound: new_sound,
 		tempo: music_properties.tempo,
 		time_signature_count: music_properties.time_signature_count,
 		time_signature_beat: music_properties.time_signature_beat
 	}
+	
+	global.song_name = music_properties.name;
 		
 	song = string_replace_all(string(new_sound), "ref sound ", "");
 	
@@ -223,7 +226,7 @@ function export_coordinate_sheet(_id) {
 		draw_text(27.839999999999996, 30.72, "Performer:     Symbol: " + _id.symbol + "    Label: " + _id.label + "    ID:");
 		
 		if (_id.show) {
-			_id.song_name = global.show.songs[global.show.current_song].name;
+			_id.song_name = global.song_name;
 		} else {
 			_id.song_name = string(obj_conductor.song);
 		}
@@ -258,74 +261,26 @@ function export_coordinate_sheet(_id) {
 				#e8e8e8
 			]
 			
-			var box_w = 756.48;
-			var box_h = line_spacing//21.12;
+			var front_back_text = get_front_back_text(_id, i);
+			var side1_2_text = get_side_1_2_text(_id, i);
 			
 			var box_y_start = 89.28;
 			var box_x = 29.759999999999998;
+			
+			var box_w = (front_back_x + string_width(front_back_text)) - box_x//756.48;
+			var box_h = line_spacing//21.12;
+			
 			
 			var col = colcol[is_multiple(i+1, 2)];
 			
 			draw_set_color(col);
 			draw_rectangle(box_x, box_y_start + (i * box_h), box_x + box_w, box_y_start + ((i+1) * box_h), false);
 			
-			var front_back_names = [
-				"Front Hash (HS)",
-				"Back Hash (HS)",
-				"Front side line",
-				"Back side line",
-				"Front Hash (NCAA)",
-				"Back Hash (NCAA)"
-			]
-			
 			draw_set_color(#333333);
 			draw_set_halign(fa_left);
 			draw_text(set_num_x, set_num_y + (i * line_spacing), string(i));
 			
-			var outside_inside_steps = _id.charts[i].outside_inside_steps;
-			var side = _id.charts[i].side;
-			var yard_line = _id.charts[i].yard_line;
-			
-			var side1_2_text = "";
-			var outside_or_inside = "inside ";
-			if outside_inside_steps < 0 {
-				outside_or_inside = "outside ";
-			} else if outside_inside_steps > 0 {
-				outside_or_inside = "inside ";
-			} else {
-				outside_or_inside = "On ";
-			}
-			
-			if outside_inside_steps != 0 {
-				side1_2_text = "Side " + string(side) + ": " + string(abs(outside_inside_steps)) + " steps " + outside_or_inside + string(yard_line) + "yd ln"
-			} else {
-				if side != 0 {
-					side1_2_text = "Side " + string(side) + ": " + outside_or_inside + string(yard_line) + "yd ln";
-				} else {
-					side1_2_text = outside_or_inside + string(yard_line) + "yd ln";
-				}
-			}
-			
 			draw_text(side_1_2_x, set_num_y + (i * line_spacing), side1_2_text);
-			
-			var front_back_steps = _id.charts[i].front_back_steps;
-			var closest_front_back = _id.charts[i].front_back_marker;
-			
-			var behind_or_front = "in front of ";
-			if front_back_steps < 0 {
-				behind_or_front = "behind ";
-			} else if front_back_steps > 0 {
-				behind_or_front = "in front of ";
-			} else {
-				behind_or_front = "On ";
-			}
-		
-			var front_back_text = "";
-			if front_back_steps != 0 {
-				front_back_text = string(abs(front_back_steps)) + " steps " + behind_or_front + front_back_names[closest_front_back];
-			} else {
-				front_back_text = behind_or_front + front_back_names[closest_front_back];
-			}
 			
 			draw_text(front_back_x, set_num_y + (i * line_spacing), front_back_text);
 		
@@ -381,4 +336,65 @@ function export_coordinate_sheet(_id) {
 		_id.chart_export_path = _path;
 		//directory_destroy(_directory);
 	}
+}
+
+function get_front_back_text(_id, chart) {
+	var front_back_steps = _id.charts[chart].front_back_steps;
+	var closest_front_back = _id.charts[chart].front_back_marker;
+			
+	var behind_or_front = "in front of ";
+	if front_back_steps < 0 {
+		behind_or_front = "behind ";
+	} else if front_back_steps > 0 {
+		behind_or_front = "in front of ";
+	} else {
+		behind_or_front = "On ";
+	}
+			
+			
+	var front_back_names = [
+		"Front Hash (HS)",
+		"Back Hash (HS)",
+		"Front side line",
+		"Back side line",
+		"Front Hash (NCAA)",
+		"Back Hash (NCAA)"
+	]
+			
+	var front_back_text = "";
+	if front_back_steps != 0 {
+		front_back_text = string(abs(front_back_steps)) + " steps " + behind_or_front + front_back_names[closest_front_back];
+	} else {
+		front_back_text = behind_or_front + front_back_names[closest_front_back];
+	}
+	
+	return front_back_text;
+}
+
+function get_side_1_2_text(_id, chart) {
+	var outside_inside_steps = _id.charts[chart].outside_inside_steps;
+	var side = _id.charts[chart].side;
+	var yard_line = _id.charts[chart].yard_line;
+			
+	var side1_2_text = "";
+	var outside_or_inside = "inside ";
+	if outside_inside_steps < 0 {
+		outside_or_inside = "outside ";
+	} else if outside_inside_steps > 0 {
+		outside_or_inside = "inside ";
+	} else {
+		outside_or_inside = "On ";
+	}
+			
+	if outside_inside_steps != 0 {
+		side1_2_text = "Side " + string(side) + ": " + string(abs(outside_inside_steps)) + " steps " + outside_or_inside + string(yard_line) + "yd ln"
+	} else {
+		if side != 0 {
+			side1_2_text = "Side " + string(side) + ": " + outside_or_inside + string(yard_line) + "yd ln";
+		} else {
+			side1_2_text = outside_or_inside + string(yard_line) + "yd ln";
+		}
+	}
+	
+	return side1_2_text;
 }

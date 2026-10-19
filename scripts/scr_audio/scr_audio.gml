@@ -1,21 +1,29 @@
 function init_music() {
 	global.music = [
-		{	sound: animal1,
+		{
+			name: "Animal 2026",
+			sound: animal1,
 			tempo: 155.5,
 			time_signature_count: 4,
 			time_signature_beat: 4
 		},
-		{	sound: everybody_talks1,
+		{
+			name: "Everybody Talks 2026",
+			sound: everybody_talks1,
 			tempo: 155,
 			time_signature_count: 4,
 			time_signature_beat: 4
 		},
-		{	sound: firework1,
+		{
+			name: "Firework 2026",
+			sound: firework1,
 			tempo: 132,
 			time_signature_count: 4,
 			time_signature_beat: 4
 		},
-		{	sound: snd_nosound,
+		{
+			name: "blank",
+			sound: snd_nosound,
 			tempo: 120,
 			time_signature_count: 4,
 			time_signature_beat: 4
