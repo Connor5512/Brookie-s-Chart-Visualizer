@@ -19,6 +19,7 @@
   "ForcedPrefabProjectReferences":[],
   "IncludedFiles":[
     {"$GMIncludedFile":"","%Name":"custom-charts.md","CopyToMask":-1,"filePath":"datafiles","name":"custom-charts.md","resourceType":"GMIncludedFile","resourceVersion":"2.0",},
+    {"$GMIncludedFile":"","%Name":"INSTRUCTIONS.md","CopyToMask":-1,"filePath":"datafiles","name":"INSTRUCTIONS.md","resourceType":"GMIncludedFile","resourceVersion":"2.0",},
     {"$GMIncludedFile":"","%Name":"four_elements.show","CopyToMask":-1,"filePath":"datafiles/sample","name":"four_elements.show","resourceType":"GMIncludedFile","resourceVersion":"2.0",},
     {"$GMIncludedFile":"","%Name":"rock_show_2026.show","CopyToMask":-1,"filePath":"datafiles/sample","name":"rock_show_2026.show","resourceType":"GMIncludedFile","resourceVersion":"2.0",},
   ],
