@@ -71,15 +71,8 @@ if instance_exists(obj_conductor) {
 //debug_message(object_index, id, "2: " + string(temp2));
 //debug_message(object_index, id, "3: " + string(temp1 - temp2));
 
-var inside_outside_multiplier;
-if charts[chart].side == 1 {
-	inside_outside_multiplier = -1;
-} else if charts[chart].side == 2 || charts[chart].side == 0 {
-	inside_outside_multiplier = 1;
-}
-
-x_start = ((50 - charts[chart].yard_line) * yard_spacing * inside_outside_multiplier) + (charts[chart].outside_inside_steps * -inside_outside_multiplier * step_width) + fifty_yard;
-y_start = front_back_prop[charts[chart].front_back_marker]._y + (charts[chart].front_back_steps * step_width);
+x_start = calculate_chart_coordinates(id, chart).x;
+y_start = calculate_chart_coordinates(id, chart).y;
 
 //debug_message(object_index, id, array_length(charts))
 //debug_message(object_index, id, array_length(chart+1))
@@ -90,8 +83,8 @@ y_start = front_back_prop[charts[chart].front_back_marker]._y + (charts[chart].f
 		inside_outside_multiplier = 1;
 	}
 	
-	x_end = ((50 - charts[chart+1].yard_line) * yard_spacing * inside_outside_multiplier) + (charts[chart+1].outside_inside_steps * -inside_outside_multiplier * step_width) + fifty_yard;
-	y_end = front_back_prop[charts[chart+1].front_back_marker]._y + (charts[chart+1].front_back_steps * step_width);
+	x_end = calculate_chart_coordinates(id, chart + 1).x;
+	y_end = calculate_chart_coordinates(id, chart + 1).y;
 //} else {
 //	x_end = x_start;
 //	y_end = y_start;

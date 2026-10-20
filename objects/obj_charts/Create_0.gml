@@ -100,11 +100,6 @@ charts = [
 chart = 0;
 chart_old = 0;
 
-step_width = 13;
-
-fifty_yard = 1146; //x
-yard_spacing = 21.1; //x
-
 enum marchers {
 	band,
 	colorguard,
@@ -120,15 +115,6 @@ enum front_back {
 	front_hash_ncaa,
 	back_hash_ncaa
 }
-
-front_back_prop = [
-	{ _y: 924, name: "Front Hash (HS)" },
-	{ _y: 557, name: "Back Hash (HS)" },
-	{ _y: 1293, name: "Front side line" },
-	{ _y: 188, name: "Back side line" },
-	{ _y: 872, name: "Front Hash (NCAA)" },
-	{ _y: 608, name: "Back Hash (NCAA)" }
-];
 
 instrument = -1;
 

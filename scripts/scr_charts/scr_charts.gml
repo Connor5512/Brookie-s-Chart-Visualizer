@@ -105,9 +105,8 @@ function load_charts(chart_path, audio_path, properties_path, show = false) {
 				inside_outside_multiplier = 1;
 			}
 
-			obj.x = ((50 - obj.charts[0].yard_line) * obj.yard_spacing * inside_outside_multiplier) + (obj.charts[0].outside_inside_steps * -inside_outside_multiplier * obj.step_width) + obj.fifty_yard;
-
-			obj.y = obj.front_back_prop[obj.charts[0].front_back_marker]._y + (obj.charts[0].front_back_steps * obj.step_width);
+			obj.x = calculate_chart_coordinates(obj, 0).x;
+			obj.y = calculate_chart_coordinates(obj, 0).y;
 			
 			debug_message(object_index, id, "Imported charts for " + obj.label);
 		}
@@ -397,4 +396,37 @@ function get_side_1_2_text(_id, chart) {
 	}
 	
 	return side1_2_text;
+}
+
+function calculate_chart_coordinates(_id, chart) {
+	var front_back_prop = [
+		{ _y: 924, name: "Front Hash (HS)" },
+		{ _y: 557, name: "Back Hash (HS)" },
+		{ _y: 1293, name: "Front side line" },
+		{ _y: 188, name: "Back side line" },
+		{ _y: 872, name: "Front Hash (NCAA)" },
+		{ _y: 608, name: "Back Hash (NCAA)" }
+	];
+	
+	var chart_set = _id.charts;
+	
+	var step_width = 13;
+
+	var fifty_yard = 1146; //x
+	var yard_spacing = 21.1; //x
+	
+	var inside_outside_multiplier;
+	if chart_set[chart].side == 1 {
+		inside_outside_multiplier = -1;
+	} else if chart_set[chart].side == 2 || chart_set[chart].side == 0 {
+		inside_outside_multiplier = 1;
+	}
+	
+	var _x = ((50 - chart_set[chart].yard_line) * yard_spacing * inside_outside_multiplier) + (chart_set[chart].outside_inside_steps * -inside_outside_multiplier * step_width) + fifty_yard;
+	var _y = front_back_prop[chart_set[chart].front_back_marker]._y + (chart_set[chart].front_back_steps * step_width);
+	
+	return {
+		x: _x,
+		y: _y
+	};
 }
