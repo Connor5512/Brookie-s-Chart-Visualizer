@@ -1,7 +1,7 @@
+visible = visibility_condition;
+
 if (debug_only) && !(global.debug) {
 	visible = false;
-} else {
-	visible = true;
 }
 
 if !(visible) || !(layer_get_visible(layer)) {

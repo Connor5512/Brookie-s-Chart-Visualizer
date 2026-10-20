@@ -1,4 +1,13 @@
 if room == rm_stadium {
+	if !(setup) {
+		setup = true;
+		
+		set_menu_visibility(true);
+		//debug_message(object_index, id, layer_get_visible("UI"));
+		set_settings_visibility(false);
+		//debug_message(object_index, id, layer_get_visible("SettingsUI"));
+	}
+	
 	if !(opening) && !(saving) && !(resetting) && !(exporting) {
 		if keyboard_check(vk_control) && keyboard_check(ord("O")) {
 			opening = true;

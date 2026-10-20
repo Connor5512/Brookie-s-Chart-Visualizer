@@ -430,3 +430,28 @@ function calculate_chart_coordinates(_id, chart) {
 		y: _y
 	};
 }
+
+function setup_new_charts() {
+	set_menu_visibility(false);
+	
+	delete_marchers();
+	instance_destroy(obj_conductor);
+	
+	audio_stop_all();
+}
+
+function reset_show_info() {
+	global.show = {
+		path: "",
+		name: "",
+		songs: [
+			{
+				name: "",
+				chart: "",
+				music: "",
+				properties: "",
+			}
+		],
+		current_song: 0
+	}
+}

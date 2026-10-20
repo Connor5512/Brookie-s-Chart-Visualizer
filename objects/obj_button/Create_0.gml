@@ -16,3 +16,5 @@ link = "";
 icon = spr_blank;
 
 mouse_hover = cr_default;
+
+visibility_condition = true;
