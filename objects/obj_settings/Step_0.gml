@@ -65,7 +65,7 @@ if room == rm_stadium {
 	if instance_exists(obj_conductor) {
 		if obj_conductor.music != undefined {
 			if audio_is_playing(obj_conductor.music) {
-				if layer_get_visible("MenuBackground") {
+				if layer_get_visible("MenuBackground") || layer_get_visible("SettingsMenu1") {
 					if (global.preferences.pause_in_menu) {
 						audio_pause_sound(obj_conductor.music);
 					} else {

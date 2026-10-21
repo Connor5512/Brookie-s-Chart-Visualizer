@@ -1,4 +1,4 @@
-if mouse_check_button_pressed(mb_left) {
+if (os_type == os_windows && mouse_check_button_pressed(mb_left)) || (global.is_mobile && device_mouse_check_button_pressed(0, mb_left)) {
 	if position_meeting(mouse_x, mouse_y, id) && ((visible) && (layer_get_visible(layer))) {
 		clicked_times++;
 	} else {

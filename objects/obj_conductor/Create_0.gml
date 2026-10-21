@@ -22,7 +22,7 @@ song_played = false;
 
 setup = false;
 
-timer = 240;
+timer = round(fps) * 4;
 real_timer = undefined;
 
 waiting_time = 0;

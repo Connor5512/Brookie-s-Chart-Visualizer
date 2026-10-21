@@ -17,7 +17,7 @@ if !(clickable) {
 if position_meeting(mouse_x, mouse_y, id) {
 	window_set_cursor(mouse_hover);
 	image_index = 1;
-	if mouse_check_button_pressed(mb_left) {
+	if (os_type == os_windows && mouse_check_button_pressed(mb_left)) ||(global.is_mobile && device_mouse_check_button_pressed(0, mb_left)) {
 		script_execute(click_script);
 		if toggle {
 			toggle_state = !(toggle_state);

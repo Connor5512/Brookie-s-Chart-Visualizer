@@ -1,6 +1,10 @@
 var debug_string = "";
 
 if global.debug {
+	debug_string = string_append(debug_string,
+		"FPS: " + string(fps) + "\n\n"
+	);
+	
 	if global.debug_preferences.mouse_position {
 		//Calculate field position of mouse cursor
 		var step_width = 13;

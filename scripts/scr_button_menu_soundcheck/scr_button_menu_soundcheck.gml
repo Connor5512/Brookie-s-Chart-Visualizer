@@ -5,6 +5,8 @@ if variable_global_exists("button_init") {
 		obj_conductor.setup_properties = false;
 	} else if button = "ToField" {
 		room_goto(rm_stadium);
+		obj_settings.setup = false;
+		
 		window_set_caption("Blank Field" + global.program_title);
 		audio_stop_all();
 	} else if button = "ToSoundcheck" {
