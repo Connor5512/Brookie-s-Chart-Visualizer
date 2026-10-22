@@ -23,10 +23,12 @@ For this visualizer, charts are stored in files marked with the *.CHART file ext
 
 The "chart" attribute is self-explanatory, though it does need to reference this list of front-back markers to be usable.
 
-0. front_hash,
-1. back_hash,
+0. front_hash_hs,
+1. back_hash_hs,
 2. front_sideline,
-3. back_sideline
+3. back_sideline,
+4. front_hash_ncaa,
+5. back_hash_ncaa
 
 "symbol" is also self-explanatory. These can be pulled directly from the coordinate sheets. But "type" and "instrument" need to be implied.
 
@@ -76,6 +78,13 @@ These files contain two folders: "charts" and "music".
 "charts" contains the *.CHART files for each of the movements.
 
 "music" contains the properties and audio for each of the songs. Song audio is stored in the OGG Vorbis format, edited to stay at a constant tempo. Music properties are stored as *.JSON structures that state the song's tempo and time signature.
+
+`{
+	"name" : "Sylva Drill 2026 Mov 1",
+	"tempo": 144,
+	"time_signature_count": 4,
+	"time_signature_beat": 4
+}`
 
 The *.show file also contains a *.JSON structure giving the file paths and information for each of the songs.
 
