@@ -21,7 +21,7 @@ if room == rm_stadium {
 			resetting = true;
 		}
 	
-		if keyboard_check(vk_control) && keyboard_check(ord("E")) {
+		if keyboard_check(vk_control) && keyboard_check(ord("E")) && instance_exists(obj_charts) {
 			exporting = true;
 		}
 	} else if saving {

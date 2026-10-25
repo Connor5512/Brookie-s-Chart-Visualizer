@@ -160,7 +160,7 @@ if mode == chart_manager_modes.export {
 		}
 		create_message("Loaded \"" + global.show.name + "\".")
 		debug_message(object_index, id, "Show loaded: \"" + global.show.name + "\"");
-		scr_setup_show_general();
+		setup_show();
 	}
 }
 

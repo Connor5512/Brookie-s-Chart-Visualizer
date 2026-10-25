@@ -439,19 +439,3 @@ function setup_new_charts() {
 	
 	audio_stop_all();
 }
-
-function reset_show_info() {
-	global.show = {
-		path: "",
-		name: "",
-		songs: [
-			{
-				name: "",
-				chart: "",
-				music: "",
-				properties: "",
-			}
-		],
-		current_song: 0
-	}
-}

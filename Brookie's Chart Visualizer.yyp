@@ -71,7 +71,7 @@
     {"id":{"name":"scr_setup_fourelements_p2","path":"scripts/scr_setup_fourelements_p2/scr_setup_fourelements_p2.yy",},},
     {"id":{"name":"scr_setup_fourelements_p3","path":"scripts/scr_setup_fourelements_p3/scr_setup_fourelements_p3.yy",},},
     {"id":{"name":"scr_setup_fourelements_p4","path":"scripts/scr_setup_fourelements_p4/scr_setup_fourelements_p4.yy",},},
-    {"id":{"name":"scr_setup_show_general","path":"scripts/scr_setup_show_general/scr_setup_show_general.yy",},},
+    {"id":{"name":"scr_shows","path":"scripts/scr_shows/scr_shows.yy",},},
     {"id":{"name":"scr_strings","path":"scripts/scr_strings/scr_strings.yy",},},
     {"id":{"name":"animal1","path":"sounds/animal1/animal1.yy",},},
     {"id":{"name":"everybody_talks1","path":"sounds/everybody_talks1/everybody_talks1.yy",},},

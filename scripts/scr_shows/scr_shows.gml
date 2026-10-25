@@ -1,4 +1,4 @@
-function scr_setup_show_general() {
+function setup_show() {
 	//delete_marchers();
 	instance_destroy(obj_conductor);
 	
@@ -16,4 +16,20 @@ function scr_setup_show_general() {
 	}
 	
 	//inst.song = everybody_talks1;
+}
+
+function reset_show_info() {
+	global.show = {
+		path: "",
+		name: "",
+		songs: [
+			{
+				name: "",
+				chart: "",
+				music: "",
+				properties: "",
+			}
+		],
+		current_song: 0
+	}
 }
