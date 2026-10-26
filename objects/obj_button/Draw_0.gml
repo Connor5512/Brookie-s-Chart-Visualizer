@@ -11,4 +11,14 @@ if info_text != "" {
 	icon = spr_info;
 }
 
+if button == "loop" && click_script = scr_button_show_audio {
+	var loop_icons = [
+		spr_loop_off,
+		spr_loop_all,
+		spr_loop_one,
+	]
+		
+	icon = loop_icons[global.loop_state];
+}
+
 draw_sprite_ext(icon, 0, x + (sprite_width/2), y + (sprite_height/2), 0.1707304, 0.1707304, 0, c_white, 1);

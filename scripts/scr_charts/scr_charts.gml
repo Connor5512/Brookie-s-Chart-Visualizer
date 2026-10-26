@@ -84,15 +84,15 @@ function load_charts(chart_path, audio_path, properties_path, show = false) {
 
 			for (var c = 0; c < ds_list_size(json_charts); c++) {
 				var chart = ds_list_find_value(json_charts, c);
-
-				reconstructed_charts[c] = {
+				
+				array_push(reconstructed_charts, {
 					counts: ds_map_find_value(chart, "counts"),
 					side: ds_map_find_value(chart, "side"),
 					front_back_marker: ds_map_find_value(chart, "front_back_marker"),
 					front_back_steps: ds_map_find_value(chart, "front_back_steps"),
 					yard_line: ds_map_find_value(chart, "yard_line"),
 					outside_inside_steps: ds_map_find_value(chart, "outside_inside_steps")
-				};
+				});
 			}
 
 			obj.charts = reconstructed_charts;

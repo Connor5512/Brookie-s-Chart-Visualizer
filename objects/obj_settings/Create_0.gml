@@ -5,6 +5,8 @@ global.log_file = "logs/" + string_replace(string(global.start_time), ".", "") +
 
 global.is_mobile = (os_type == os_android || os_type == os_ios);
 
+global.loop_state = loop_states.disabled;
+
 room_goto(rm_stadium);
 
 game_set_speed(60, gamespeed_fps);

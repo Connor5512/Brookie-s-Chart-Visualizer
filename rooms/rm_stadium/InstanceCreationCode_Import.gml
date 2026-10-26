@@ -1,3 +1,6 @@
 click_script = scr_button_menu_fileimport;
 
-clickable = !(global.is_mobile);
+clickable_function = true;
+function check_clickable() {
+	clickable = !(global.is_mobile);
+}

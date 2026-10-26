@@ -31,7 +31,12 @@ beat = pos/delay;
 if pos = 0 && song_played && !(audio_is_playing(music)) {
 	if (show) {
 		if array_length(global.show.songs) - 1 != global.show.current_song {
-			global.show.current_song++;
+			if global.loop_state != loop_states.one {
+				global.show.current_song++;
+			}
+			setup_show();
+		} else if global.loop_state == loop_states.all {
+			global.show.current_song = 0;
 			setup_show();
 		}
 	} else {

@@ -2,6 +2,7 @@ click_script = scr_none;
 global.button_init = true;
 
 clickable = true;
+clickable_function = false;
 
 toggle = false;
 toggle_state = false;
@@ -17,4 +18,4 @@ icon = spr_blank;
 
 mouse_hover = cr_default;
 
-visibility_condition = true;
+visibility_condition = false;

@@ -144,6 +144,7 @@ if mode == chart_manager_modes.export {
 		//initialize show
 		if global.show.path != chart_path {
 			directory_destroy("cache/show/");
+			global.loop_state = loop_states.disabled;
 			debug_message(object_index, id, "Unzipping *.show file...");
 			zip_unzip(chart_path, "cache/show/");
 	

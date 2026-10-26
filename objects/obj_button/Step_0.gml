@@ -1,4 +1,10 @@
-visible = visibility_condition;
+if visibility_condition {
+	check_visibility();
+}
+
+if clickable_function {
+	check_clickable();
+}
 
 if (debug_only) && !(global.debug) {
 	visible = false;
