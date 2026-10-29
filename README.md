@@ -23,3 +23,17 @@ The last part of the chart tells how far forwards or backwards the marcher is, u
 While individual dots don't do much on their own, they can form pictures and imagery when in combination with other members.
 
 ![Example chart](example-chart.png)
+
+## Credits
+More credits will be added as needed.
+
+### Special Thanks
+- Thank you to my band directors Mr. Draime and Mrs. Kelley for inspiring this project through our school band program!
+
+### Music Arrangement
+- Shane Kelbley - 4 Elements
+- J.W. Pepper - Rock Show 2026
+
+### Visual Elements
+- Drill Design Solutions - field images
+- Flaticon - file sprites
