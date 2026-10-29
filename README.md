@@ -28,12 +28,17 @@ While individual dots don't do much on their own, they can form pictures and ima
 More credits will be added as needed.
 
 ### Special Thanks
-- Thank you to my band directors Mr. Draime and Mrs. Kelley for inspiring this project through our school band program!
-
-### Music Arrangement
-- Shane Kelbley - 4 Elements
-- J.W. Pepper - Rock Show 2026
+- Aaron Draime- Emily Kelley- Sylvania Southview Marching Band
+### Music Arrangements
+- 4 Elements - Shane Kelbley
+- Rock Show 2026 - J.W. Pepper
 
 ### Visual Elements
-- Drill Design Solutions - field images
-- Flaticon - file sprites
+- Field images - Drill Design Solutions
+- Button sprites (File import, File new, Football) - Flaticon
+- Button sprites (Clear cache) - Icons8
+
+credits to add: Four Elements icon, Settings Cog
+
+-- 
+≽^•༚• ྀི≼
