@@ -38,7 +38,5 @@ More credits will be added as needed.
 - Button sprites (File import, File new, Football) - Flaticon
 - Button sprites (Clear cache) - Icons8
 
-credits to add: Four Elements icon, Settings Cog
-
 -- 
 ≽^•༚• ྀི≼
