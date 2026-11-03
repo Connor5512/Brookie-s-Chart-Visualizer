@@ -29,8 +29,8 @@ More credits will be added as needed.
 
 ### Special Thanks
 - Aaron Draime
-- - Emily Kelley
-  - - Sylvania Southview Marching Band
+- Emily Kelley
+- Sylvania Southview Marching Band
 ### Music Arrangements
 - 4 Elements - Shane Kelbley
 - Rock Show 2026 - J.W. Pepper
