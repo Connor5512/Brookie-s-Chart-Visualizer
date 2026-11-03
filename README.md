@@ -28,7 +28,9 @@ While individual dots don't do much on their own, they can form pictures and ima
 More credits will be added as needed.
 
 ### Special Thanks
-- Aaron Draime- Emily Kelley- Sylvania Southview Marching Band
+- Aaron Draime
+- - Emily Kelley
+  - - Sylvania Southview Marching Band
 ### Music Arrangements
 - 4 Elements - Shane Kelbley
 - Rock Show 2026 - J.W. Pepper
