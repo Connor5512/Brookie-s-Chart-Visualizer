@@ -142,23 +142,24 @@ if mode == chart_manager_modes.export {
 		load_charts(chart_path, audio_path, properties_path);
 	} else if file_mode == file_modes.show {
 		//initialize show
-		if global.show.path != chart_path {
-			directory_destroy("cache/show/");
-			global.loop_state = loop_states.disabled;
-			debug_message(object_index, id, "Unzipping *.show file...");
-			zip_unzip(chart_path, "cache/show/");
-	
-			var show_properties = load_json("cache/show/properties.json");
 		
-			global.show = {
-				path: chart_path,
-				name: show_properties.name,
-				songs: show_properties.songs,
-				current_song: 0
-			}
-			
-			window_set_caption("\"" + global.show.name + "\"" + global.program_title);
+		//there used to be a check for if the show being opened is the same one currently open
+		//but it was removed in the latest patch to allow reloading currently open shows
+		directory_destroy("cache/show/");
+		global.loop_state = loop_states.disabled;
+		debug_message(object_index, id, "Unzipping *.show file...");
+		zip_unzip(chart_path, "cache/show/");
+	
+		var show_properties = load_json("cache/show/properties.json");
+		
+		global.show = {
+			path: chart_path,
+			name: show_properties.name,
+			songs: show_properties.songs,
+			current_song: 0
 		}
+			
+		window_set_caption("\"" + global.show.name + "\"" + global.program_title);
 		create_message("Loaded \"" + global.show.name + "\".")
 		debug_message(object_index, id, "Show loaded: \"" + global.show.name + "\"");
 		setup_show();

@@ -1,5 +1,28 @@
 init_music();
 
+global.credits =
+
+"Credits -\n" +
+"More credits will be added as needed.\n" +
+
+"\nSpecial Thanks -" +
+"\n- Aaron Draime" +
+"\n- Emily Kelley" +
+"\n- Sylvania Southview Marching Band" +
+
+"\nMusic Arrangements" +
+"\n- Rock Show 2026 - J.W. Pepper" +
+"\n- 4 Elements - Shane Kelbley" +
+
+"\nVisual Elements" +
+"\n- Field images - Drill Design Solutions" +
+"\n- Button sprites (File import, File new, Football) - Flaticon" +
+"\n- Button sprites (Clear cache) - Icons8" +
+
+"\nDrill Design -" +
+"\n- Sylvania Southview Marching Band"
+;
+
 global.start_time = string(current_year) + "-" + string(current_month) + "-" + string(current_day) + " " + string(current_hour) + "-" + string(current_minute) + "-" + string(current_second)
 global.log_file = "logs/" + string_replace(string(global.start_time), ".", "") + ".log"
 
