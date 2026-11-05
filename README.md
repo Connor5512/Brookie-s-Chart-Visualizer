@@ -31,9 +31,13 @@ More credits will be added as needed.
 - Aaron Draime
 - Emily Kelley
 - Sylvania Southview Marching Band
+- 
 ### Music Arrangements
-- 4 Elements - Shane Kelbley
-- Rock Show 2026 - J.W. Pepper
+- "4 Elements" - Shane Kelbley
+- "Rock Show 2026" - J.W. Pepper
+
+## Drill Design
+- "4 Elements" - Karl Diefenbach
 
 ### Visual Elements
 - Field images - Drill Design Solutions
