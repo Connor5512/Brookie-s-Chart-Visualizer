@@ -14,6 +14,24 @@ if type == marchers.band {
 
 colors = global.preferences.color_marchers;
 labels = global.preferences.label_marchers;
+uniform_variant = global.preferences.uniform;
+
+var uniform_names = [
+	"normal",
+	"_2025",
+	"summer",
+	"raincoat"
+]
+
+var marcher_names = [
+	"band",
+	"colorguard",
+	"majorette",
+	"front_ensemble",
+]
+
+var uniform_id_struct = struct_get(uniform_variants, uniform_names[uniform_variant]);
+image_index = struct_get(uniform_id_struct, marcher_names[type]);
 
 if colors {
 	if sprite_index == spr_marcher_band {
@@ -41,8 +59,6 @@ if colors {
 			image_index = 0;
 		}
 	}
-} else {
-	image_index = 0;
 }
 
 //var temp1 = 0, temp2 = 0;

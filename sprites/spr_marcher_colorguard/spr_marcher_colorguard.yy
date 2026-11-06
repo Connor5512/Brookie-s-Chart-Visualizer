@@ -13,12 +13,17 @@
   "For3D":false,
   "frames":[
     {"$GMSpriteFrame":"v1","%Name":"190d0325-40af-46e5-97ca-f8c86516c580","name":"190d0325-40af-46e5-97ca-f8c86516c580","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"8b4dccd6-d9d1-4122-ae1e-9489a48b550c","name":"8b4dccd6-d9d1-4122-ae1e-9489a48b550c","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"f4e7d4fd-ac09-44fb-be06-917e516e1718","name":"f4e7d4fd-ac09-44fb-be06-917e516e1718","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"c2f7490b-7005-4499-a467-3b5aeae6dd9b","name":"c2f7490b-7005-4499-a467-3b5aeae6dd9b","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
   ],
   "gridX":0,
   "gridY":0,
   "height":22,
   "HTile":false,
   "layers":[
+    {"$GMImageLayer":"","%Name":"b5ee5b28-fb9f-4106-abc4-2e698a4b0e72","blendMode":0,"displayName":"Layer 4","isLocked":false,"name":"b5ee5b28-fb9f-4106-abc4-2e698a4b0e72","opacity":100.0,"resourceType":"GMImageLayer","resourceVersion":"2.0","visible":true,},
+    {"$GMImageLayer":"","%Name":"00d12c11-c144-4546-b836-444630707ab7","blendMode":0,"displayName":"Layer 3","isLocked":false,"name":"00d12c11-c144-4546-b836-444630707ab7","opacity":100.0,"resourceType":"GMImageLayer","resourceVersion":"2.0","visible":true,},
     {"$GMImageLayer":"","%Name":"b3729ffe-3d35-425c-b0ac-cfa66e81a2d6","blendMode":0,"displayName":"Layer 2","isLocked":false,"name":"b3729ffe-3d35-425c-b0ac-cfa66e81a2d6","opacity":100.0,"resourceType":"GMImageLayer","resourceVersion":"2.0","visible":true,},
     {"$GMImageLayer":"","%Name":"2495187a-be39-4859-95c1-7b75335f1c2c","blendMode":0,"displayName":"Layer 1","isLocked":false,"name":"2495187a-be39-4859-95c1-7b75335f1c2c","opacity":100.0,"resourceType":"GMImageLayer","resourceVersion":"2.0","visible":true,},
     {"$GMImageLayer":"","%Name":"ee7325e6-a28a-4b61-a522-2d9cb3593fb7","blendMode":0,"displayName":"default","isLocked":false,"name":"ee7325e6-a28a-4b61-a522-2d9cb3593fb7","opacity":100.0,"resourceType":"GMImageLayer","resourceVersion":"2.0","visible":true,},
@@ -51,7 +56,7 @@
     },
     "eventStubScript":null,
     "eventToFunction":{},
-    "length":1.0,
+    "length":4.0,
     "lockOrigin":false,
     "moments":{
       "$KeyframeStore<MomentsEventKeyframe>":"",
@@ -73,6 +78,15 @@
             {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
                 "0":{"$SpriteFrameKeyframe":"","Id":{"name":"190d0325-40af-46e5-97ca-f8c86516c580","path":"sprites/spr_marcher_colorguard/spr_marcher_colorguard.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
               },"Disabled":false,"id":"47e76d96-140e-4620-9cfb-4cc5e2dc36d7","IsCreationKey":false,"Key":0.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
+                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"8b4dccd6-d9d1-4122-ae1e-9489a48b550c","path":"sprites/spr_marcher_colorguard/spr_marcher_colorguard.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
+              },"Disabled":false,"id":"197f7a57-59bd-4541-a376-081591276f5b","IsCreationKey":false,"Key":1.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
+                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"f4e7d4fd-ac09-44fb-be06-917e516e1718","path":"sprites/spr_marcher_colorguard/spr_marcher_colorguard.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
+              },"Disabled":false,"id":"13a474ab-f7f9-4968-bf2d-38f37006177b","IsCreationKey":false,"Key":2.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
+                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"c2f7490b-7005-4499-a467-3b5aeae6dd9b","path":"sprites/spr_marcher_colorguard/spr_marcher_colorguard.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
+              },"Disabled":false,"id":"03c374c1-e881-448d-803a-0c63c9b0833e","IsCreationKey":false,"Key":3.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
           ],"resourceType":"KeyframeStore<SpriteFrameKeyframe>","resourceVersion":"2.0",},"modifiers":[],"name":"frames","resourceType":"GMSpriteFramesTrack","resourceVersion":"2.0","spriteId":null,"trackColour":0,"tracks":[],"traits":0,},
     ],
     "visibleRange":null,

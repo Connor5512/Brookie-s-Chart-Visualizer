@@ -11,16 +11,16 @@ global.credits =
 "\n- Sylvania Southview Marching Band" +
 
 "\nMusic Arrangements" +
-"\n- Rock Show 2026 - J.W. Pepper" +
-"\n- 4 Elements - Shane Kelbley" +
+"\n- \"Rock Show 2026\" - J.W. Pepper" +
+"\n- \"4 Elements\" - Shane Kelbley" +
+
+"\nDrill Design -" +
+"\n- \"4 Elements\" - Carl Diefenbach" +
 
 "\nVisual Elements" +
 "\n- Field images - Drill Design Solutions" +
 "\n- Button sprites (File import, File new, Football) - Flaticon" +
-"\n- Button sprites (Clear cache) - Icons8" +
-
-"\nDrill Design -" +
-"\n- Sylvania Southview Marching Band"
+"\n- Button sprites (Clear cache) - Icons8"
 ;
 
 global.start_time = string(current_year) + "-" + string(current_month) + "-" + string(current_day) + " " + string(current_hour) + "-" + string(current_minute) + "-" + string(current_second)
@@ -48,6 +48,7 @@ global.preferences =
 	color_marchers: ini_read_real("PREFERENCES", "color_marchers", false),
 	label_marchers: ini_read_real("PREFERENCES", "label_marchers", true),
 	play_music: ini_read_real("PREFERENCES", "play_music", false),
+	uniform: ini_read_real("PREFERENCES", "uniform", uniforms.normal),
 }
 
 global.debug_preferences = {

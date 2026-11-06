@@ -13,6 +13,41 @@ charts_exported = true;
 
 colors = global.preferences.color_marchers;
 labels = global.preferences.label_marchers;
+uniform_variant = global.preferences.uniform;
+
+enum uniforms {
+	normal,
+	_2025,
+	summer,
+	raincoat
+}
+
+uniform_variants = {
+	normal: {
+		band: 0,
+		front_ensemble: 0,
+		colorguard: 0,
+		majorette: 0
+	},
+	_2025:  {
+		band: 0,
+		front_ensemble: 0,
+		colorguard: 1,
+		majorette: 0
+	},
+	summer: {
+		band: 10,
+		front_ensemble: 10,
+		colorguard: 2,
+		majorette: 0
+	},
+	raincoat: {
+		band: 11,
+		front_ensemble: 11,
+		colorguard: 3,
+		majorette: 1
+	}
+}
 
 charts = [
 	{

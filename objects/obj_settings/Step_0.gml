@@ -100,6 +100,7 @@ ini_write_real("PREFERENCES", "pause_in_menu", global.preferences.pause_in_menu)
 ini_write_real("PREFERENCES", "color_marchers", global.preferences.color_marchers);
 ini_write_real("PREFERENCES", "label_marchers", global.preferences.label_marchers);
 ini_write_real("PREFERENCES", "play_music", global.preferences.play_music);
+ini_write_real("PREFERENCES", "uniform", global.preferences.uniform);
 
 ini_write_real("DEBUG", "mouse_coordinates", global.debug_preferences.mouse_coordinates);
 ini_write_real("DEBUG", "mouse_position", global.debug_preferences.mouse_position);
